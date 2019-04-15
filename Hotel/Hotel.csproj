@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{80F444DB-744C-4EF0-89F6-00A5E0A078D2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Hotel</RootNamespace>
+    <AssemblyName>Hotel</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>glib-sharp-2.0</Package>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="glade-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+    <Reference Include="Google.Protobuf">
+      <HintPath>mysql-connector-net-8.0.15-noinstall\v4.5.2\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>mysql-connector-net-8.0.15-noinstall\v4.5.2\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework">
+      <HintPath>mysql-connector-net-8.0.15-noinstall\v4.5.2\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web">
+      <HintPath>mysql-connector-net-8.0.15-noinstall\v4.5.2\MySql.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="MySQL.Data.EntityFrameworkCore.Design">
+      <HintPath>mysql-connector-net-8.0.15-noinstall\v4.5.2\MySQL.Data.EntityFrameworkCore.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MySQL.Data.EntityFrameworkCore">
+      <HintPath>mysql-connector-net-8.0.15-noinstall\v4.5.2\MySQL.Data.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="libstetic">
+      <HintPath>..\..\..\..\..\usr\lib\monodevelop\AddIns\MonoDevelop.GtkCore\libstetic.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="MainWindow.cs" />
+    <Compile Include="gtk-gui\MainWindow.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="entidades\Tbl_user.cs" />
+    <Compile Include="entidades\Tbl_rol.cs" />
+    <Compile Include="entidades\Tbl_UserRol.cs" />
+    <Compile Include="entidades\Tbl_rolOption.cs" />
+    <Compile Include="entidades\Tbl_opcion.cs" />
+    <Compile Include="entidades\Tbl_huesped.cs" />
+    <Compile Include="entidades\Tbl_reservacion.cs" />
+    <Compile Include="entidades\Tbl_habitacion.cs" />
+    <Compile Include="entidades\Tbl_hotel.cs" />
+    <Compile Include="entidades\Tbl_tipoHabitacion.cs" />
+    <Compile Include="entidades\Tbl_detalleReserv.cs" />
+    <Compile Include="entidades\Tbl_tipoTarjeta.cs" />
+    <Compile Include="entidades\Tbl_tarjeta.cs" />
+    <Compile Include="entidades\Tbl_emisorTarjeta.cs" />
+    <Compile Include="entidades\Tbl_producto.cs" />
+    <Compile Include="entidades\Tbl_tipoProducto.cs" />
+    <Compile Include="entidades\Tbl_movimiento.cs" />
+    <Compile Include="entidades\Tbl_detalleMov.cs" />
+    <Compile Include="entidades\Tbl_tipoMovimiento.cs" />
+    <Compile Include="entidades\Tbl_facturaEnc.cs" />
+    <Compile Include="entidades\Tbl_detalleFactura.cs" />
+    <Compile Include="entidades\Vw_tarjetas.cs" />
+    <Compile Include="entidades\Vw_users.cs" />
+    <Compile Include="entidades\Vw_productos.cs" />
+    <Compile Include="entidades\Vw_habitaciones.cs" />
+    <Compile Include="fmr_login.cs" />
+    <Compile Include="gtk-gui\Hotel.fmr_login.cs" />
+    <Compile Include="fmr_Reservacion.cs" />
+    <Compile Include="gtk-gui\Hotel.fmr_Reservacion.cs" />
+    <Compile Include="fmr_detalleReserv.cs" />
+    <Compile Include="gtk-gui\Hotel.fmr_detalleReserv.cs" />
+    <Compile Include="fmr_usuario.cs" />
+    <Compile Include="gtk-gui\Hotel.fmr_usuario.cs" />
+    <Compile Include="fmr_huespedes.cs" />
+    <Compile Include="gtk-gui\Hotel.fmr_huespedes.cs" />
+    <Compile Include="fmr_tarjetas.cs" />
+    <Compile Include="gtk-gui\Hotel.fmr_tarjetas.cs" />
+    <Compile Include="fmrGestionHabitaciones.cs" />
+    <Compile Include="gtk-gui\Hotel.fmrGestionHabitaciones.cs" />
+    <Compile Include="datos\dtUsuario.cs" />
+    <Compile Include="datos\Conexion.cs" />
+    <Compile Include="negocio\ngUsuario.cs" />
+    <Compile Include="datos\dtDetalleReserv.cs" />
+    <Compile Include="datos\dtReservacion.cs" />
+    <Compile Include="datos\dtTipoTarjeta.cs" />
+    <Compile Include="datos\dtEmisorTarjeta.cs" />
+    <Compile Include="negocio\ngTipoTarjeta.cs" />
+    <Compile Include="negocio\ngEmisorTarjeta.cs" />
+    <Compile Include="frm_EmisorTarjeta.cs" />
+    <Compile Include="gtk-gui\Hotel.frm_EmisorTarjeta.cs" />
+    <Compile Include="frm_reservaciones.cs" />
+    <Compile Include="gtk-gui\Hotel.frm_reservaciones.cs" />
+    <Compile Include="negocio\ngReservacion.cs" />
+    <Compile Include="datos\dtHabitaciones.cs" />
+    <Compile Include="frm_huespedReserv.cs" />
+    <Compile Include="gtk-gui\Hotel.frm_huespedReserv.cs" />
+    <Compile Include="datos\dtHuesped.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="entidades\" />
+    <Folder Include="datos\" />
+    <Folder Include="negocio\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
