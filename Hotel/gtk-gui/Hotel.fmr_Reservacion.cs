@@ -20,7 +20,7 @@ namespace Hotel
 
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 
-		private global::Gtk.TreeView treeview3;
+		private global::Gtk.TreeView twHabitaciones;
 
 		private global::Gtk.ComboBoxEntry comboboxentry2;
 
@@ -105,12 +105,12 @@ namespace Hotel
 			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
 			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
 			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.treeview3 = new global::Gtk.TreeView();
-			this.treeview3.WidthRequest = 300;
-			this.treeview3.HeightRequest = 200;
-			this.treeview3.CanFocus = true;
-			this.treeview3.Name = "treeview3";
-			this.GtkScrolledWindow.Add(this.treeview3);
+			this.twHabitaciones = new global::Gtk.TreeView();
+			this.twHabitaciones.WidthRequest = 300;
+			this.twHabitaciones.HeightRequest = 200;
+			this.twHabitaciones.CanFocus = true;
+			this.twHabitaciones.Name = "twHabitaciones";
+			this.GtkScrolledWindow.Add(this.twHabitaciones);
 			this.fixed1.Add(this.GtkScrolledWindow);
 			global::Gtk.Fixed.FixedChild w8 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.GtkScrolledWindow]));
 			w8.X = 28;

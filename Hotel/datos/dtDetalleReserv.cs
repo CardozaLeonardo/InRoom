@@ -4,6 +4,7 @@ using MySql.Data;
 using Gtk;
 using System.Text;
 using Hotel.entidades;
+using System.Collections.Generic;
 
 namespace Hotel.datos
 {
@@ -13,16 +14,20 @@ namespace Hotel.datos
         MessageDialog ms = null;
         StringBuilder sb = new StringBuilder();
 
-        public bool GuardarDetalleReserv(Tbl_detalleReserv tdr)
+        public bool GuardarDetalleReserv(List<Tbl_detalleReserv> lista)
         {
             bool guardado = false;
             int x = 0;
 
             sb.Clear();
             sb.Append("USE `hotel`;");
-            sb.Append("INSERT INTO tbl_detalleReserv (id_reservacion, id_habitacion, fecha_entrada" +
-            	", fecha_salida, hora_entrada, hora_salida) VALUES(" + tdr.Id_reservacion + "," + tdr.Id_habitacion + ",'"
+
+            foreach(Tbl_detalleReserv tdr in lista)
+            {
+                sb.Append("INSERT INTO tbl_detalleReserv (id_reservacion, id_habitacion, fecha_entrada" +
+                ", fecha_salida, hora_entrada, hora_salida) VALUES(" + tdr.Id_reservacion + "," + tdr.Id_habitacion + ",'"
                 + tdr.Fecha_entrada + "','" + tdr.Fecha_salida + "','" + tdr.Hora_entrada + "','" + tdr.Hora_salida + "');");
+            }
 
 
             try

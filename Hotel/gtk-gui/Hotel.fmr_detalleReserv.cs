@@ -30,12 +30,6 @@ namespace Hotel
 
 		private global::Gtk.SpinButton salida_minuto;
 
-		private global::Gtk.ScrolledWindow GtkScrolledWindow;
-
-		private global::Gtk.TreeView twHabitaciones;
-
-		private global::Gtk.Button btnVerificar;
-
 		private global::Gtk.Label label6;
 
 		private global::Gtk.Button btn_aceptar;
@@ -43,6 +37,16 @@ namespace Hotel
 		private global::Gtk.Button btn_cancelar;
 
 		private global::Gtk.Calendar calen;
+
+		private global::Gtk.ScrolledWindow GtkScrolledWindow;
+
+		private global::Gtk.TreeView twHabitaciones;
+
+		private global::Gtk.Button btnVerificar;
+
+		private global::Gtk.Label lbl;
+
+		private global::Gtk.Entry txtHab;
 
 		protected virtual void Build()
 		{
@@ -177,40 +181,13 @@ namespace Hotel
 			w12.X = 595;
 			w12.Y = 473;
 			// Container child fixed3.Gtk.Fixed+FixedChild
-			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow();
-			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
-			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
-			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-			this.twHabitaciones = new global::Gtk.TreeView();
-			this.twHabitaciones.WidthRequest = 350;
-			this.twHabitaciones.HeightRequest = 400;
-			this.twHabitaciones.CanFocus = true;
-			this.twHabitaciones.Name = "twHabitaciones";
-			this.GtkScrolledWindow.Add(this.twHabitaciones);
-			this.fixed3.Add(this.GtkScrolledWindow);
-			global::Gtk.Fixed.FixedChild w14 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.GtkScrolledWindow]));
-			w14.X = 12;
-			w14.Y = 74;
-			// Container child fixed3.Gtk.Fixed+FixedChild
-			this.btnVerificar = new global::Gtk.Button();
-			this.btnVerificar.WidthRequest = 150;
-			this.btnVerificar.HeightRequest = 35;
-			this.btnVerificar.CanFocus = true;
-			this.btnVerificar.Name = "btnVerificar";
-			this.btnVerificar.UseUnderline = true;
-			this.btnVerificar.Label = global::Mono.Unix.Catalog.GetString("Verificar");
-			this.fixed3.Add(this.btnVerificar);
-			global::Gtk.Fixed.FixedChild w15 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.btnVerificar]));
-			w15.X = 115;
-			w15.Y = 510;
-			// Container child fixed3.Gtk.Fixed+FixedChild
 			this.label6 = new global::Gtk.Label();
 			this.label6.Name = "label6";
 			this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("DETALLE DE RESERVACION");
 			this.fixed3.Add(this.label6);
-			global::Gtk.Fixed.FixedChild w16 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.label6]));
-			w16.X = 328;
-			w16.Y = 17;
+			global::Gtk.Fixed.FixedChild w13 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.label6]));
+			w13.X = 328;
+			w13.Y = 17;
 			// Container child fixed3.Gtk.Fixed+FixedChild
 			this.btn_aceptar = new global::Gtk.Button();
 			this.btn_aceptar.WidthRequest = 120;
@@ -220,9 +197,9 @@ namespace Hotel
 			this.btn_aceptar.UseUnderline = true;
 			this.btn_aceptar.Label = global::Mono.Unix.Catalog.GetString("Agregar");
 			this.fixed3.Add(this.btn_aceptar);
-			global::Gtk.Fixed.FixedChild w17 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.btn_aceptar]));
-			w17.X = 468;
-			w17.Y = 534;
+			global::Gtk.Fixed.FixedChild w14 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.btn_aceptar]));
+			w14.X = 468;
+			w14.Y = 534;
 			// Container child fixed3.Gtk.Fixed+FixedChild
 			this.btn_cancelar = new global::Gtk.Button();
 			this.btn_cancelar.WidthRequest = 120;
@@ -232,18 +209,63 @@ namespace Hotel
 			this.btn_cancelar.UseUnderline = true;
 			this.btn_cancelar.Label = global::Mono.Unix.Catalog.GetString("Cancelar");
 			this.fixed3.Add(this.btn_cancelar);
-			global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.btn_cancelar]));
-			w18.X = 612;
-			w18.Y = 535;
+			global::Gtk.Fixed.FixedChild w15 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.btn_cancelar]));
+			w15.X = 612;
+			w15.Y = 535;
 			// Container child fixed3.Gtk.Fixed+FixedChild
 			this.calen = new global::Gtk.Calendar();
 			this.calen.CanFocus = true;
 			this.calen.Name = "calen";
 			this.calen.DisplayOptions = ((global::Gtk.CalendarDisplayOptions)(35));
 			this.fixed3.Add(this.calen);
-			global::Gtk.Fixed.FixedChild w19 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.calen]));
-			w19.X = 462;
-			w19.Y = 69;
+			global::Gtk.Fixed.FixedChild w16 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.calen]));
+			w16.X = 462;
+			w16.Y = 69;
+			// Container child fixed3.Gtk.Fixed+FixedChild
+			this.GtkScrolledWindow = new global::Gtk.ScrolledWindow();
+			this.GtkScrolledWindow.Name = "GtkScrolledWindow";
+			this.GtkScrolledWindow.ShadowType = ((global::Gtk.ShadowType)(1));
+			// Container child GtkScrolledWindow.Gtk.Container+ContainerChild
+			this.twHabitaciones = new global::Gtk.TreeView();
+			this.twHabitaciones.WidthRequest = 350;
+			this.twHabitaciones.HeightRequest = 360;
+			this.twHabitaciones.CanFocus = true;
+			this.twHabitaciones.Name = "twHabitaciones";
+			this.GtkScrolledWindow.Add(this.twHabitaciones);
+			this.fixed3.Add(this.GtkScrolledWindow);
+			global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.GtkScrolledWindow]));
+			w18.X = 34;
+			w18.Y = 142;
+			// Container child fixed3.Gtk.Fixed+FixedChild
+			this.btnVerificar = new global::Gtk.Button();
+			this.btnVerificar.WidthRequest = 150;
+			this.btnVerificar.HeightRequest = 35;
+			this.btnVerificar.CanFocus = true;
+			this.btnVerificar.Name = "btnVerificar";
+			this.btnVerificar.UseUnderline = true;
+			this.btnVerificar.Label = global::Mono.Unix.Catalog.GetString("Verificar");
+			this.fixed3.Add(this.btnVerificar);
+			global::Gtk.Fixed.FixedChild w19 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.btnVerificar]));
+			w19.X = 128;
+			w19.Y = 533;
+			// Container child fixed3.Gtk.Fixed+FixedChild
+			this.lbl = new global::Gtk.Label();
+			this.lbl.Name = "lbl";
+			this.lbl.LabelProp = global::Mono.Unix.Catalog.GetString("Habitación:");
+			this.fixed3.Add(this.lbl);
+			global::Gtk.Fixed.FixedChild w20 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.lbl]));
+			w20.X = 37;
+			w20.Y = 87;
+			// Container child fixed3.Gtk.Fixed+FixedChild
+			this.txtHab = new global::Gtk.Entry();
+			this.txtHab.CanFocus = true;
+			this.txtHab.Name = "txtHab";
+			this.txtHab.IsEditable = false;
+			this.txtHab.InvisibleChar = '•';
+			this.fixed3.Add(this.txtHab);
+			global::Gtk.Fixed.FixedChild w21 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.txtHab]));
+			w21.X = 121;
+			w21.Y = 83;
 			this.Add(this.fixed3);
 			if ((this.Child != null))
 			{
@@ -254,8 +276,10 @@ namespace Hotel
 			this.Show();
 			this.btn_fijarEntrada.Clicked += new global::System.EventHandler(this.OnBtnFijarEntradaClicked);
 			this.btn_fijarSalida.Clicked += new global::System.EventHandler(this.OnBtnFijarSalidaClicked);
-			this.btnVerificar.Clicked += new global::System.EventHandler(this.OnBtnVerificarClicked);
+			this.btn_aceptar.Clicked += new global::System.EventHandler(this.OnBtnAceptarClicked);
 			this.btn_cancelar.Clicked += new global::System.EventHandler(this.OnBtnCancelarClicked);
+			this.twHabitaciones.CursorChanged += new global::System.EventHandler(this.OnTwHabitacionesCursorChanged);
+			this.btnVerificar.Clicked += new global::System.EventHandler(this.OnBtnVerificarClicked);
 		}
 	}
 }

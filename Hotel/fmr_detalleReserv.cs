@@ -11,8 +11,9 @@ namespace Hotel
     {
         dtHabitaciones dth = new dtHabitaciones();
         List<Tbl_detalleReserv> lista = null;
-        Tbl_detalleReserv tdr = null;
+        Tbl_detalleReserv tbr = new Tbl_detalleReserv();
         MessageDialog ms = null;
+        fmr_Reservacion form = null;
         public fmr_detalleReserv() :
                 base(Gtk.WindowType.Toplevel)
         {
@@ -22,11 +23,13 @@ namespace Hotel
         }
 
 
-        public fmr_detalleReserv(List<Tbl_detalleReserv> list) :
+        public fmr_detalleReserv(List<Tbl_detalleReserv> list, fmr_Reservacion frm) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
             lista = list;
+            form = frm;
+
             //LlenarTabla();
         }
 
@@ -136,7 +139,7 @@ namespace Hotel
 
         protected void OnBtnVerificarClicked(object sender, EventArgs e)
         {
-            tdr = new Tbl_detalleReserv();
+            tbr = new Tbl_detalleReserv();
 
             int hora_salida = Convert.ToInt32(salida_hora.Text);
             int minuto_salida = Convert.ToInt32(salida_minuto.Text);
@@ -190,17 +193,17 @@ namespace Hotel
                 minuto_e = entrada_minuto.Text;
             }
 
-            tdr.Fecha_entrada = txt_fechaEntrada.Text;
-            tdr.Fecha_salida = txt_fechaSalida.Text;
-            tdr.Hora_entrada = hora_e + ":" + minuto_e;
-            tdr.Hora_salida = hora_s + ":" + minuto_s;
+            tbr.Fecha_entrada = txt_fechaEntrada.Text;
+            tbr.Fecha_salida = txt_fechaSalida.Text;
+            tbr.Hora_entrada = hora_e + ":" + minuto_e;
+            tbr.Hora_salida = hora_s + ":" + minuto_s;
 
             //ListStore lista = dth.ListarHabitacionesDisponibles(tdr);
 
             //LlenarTabla(lista);
 
 
-            twHabitaciones.Model = dth.ListarHabitacionesDisponibles(tdr);
+            twHabitaciones.Model = dth.ListarHabitacionesDisponibles(tbr);
             string[] titulos = { "ID", "Numero", "Tipo" };
             for (int i = 0; i < titulos.Length; i++)
             {
@@ -260,6 +263,93 @@ namespace Hotel
             }
 
             return true;
+        }
+
+        protected void OnTwHabitacionesCursorChanged(object sender, EventArgs e)
+        {
+            tbr = new Tbl_detalleReserv();
+            TreeSelection seleccion = (sender as TreeView).Selection;
+            TreeIter iter;
+            TreeModel model;
+
+            if (seleccion.GetSelected(out model, out iter))
+            {
+                tbr.Id_habitacion = Convert.ToInt32(model.GetValue(iter, 0).ToString());
+                tbr.Numero = model.GetValue(iter, 1).ToString();
+                tbr.TipoHabitacion = model.GetValue(iter, 2).ToString();
+                txtHab.Text = tbr.Numero;
+            }
+        }
+
+        protected void OnBtnAceptarClicked(object sender, EventArgs e)
+        {
+            if(!txtHab.Text.Equals(""))
+            {
+                int hora_salida = Convert.ToInt32(salida_hora.Text);
+                int minuto_salida = Convert.ToInt32(salida_minuto.Text);
+                int hora_entrada = Convert.ToInt32(entrada_hora.Text);
+                int minuto_entrada = Convert.ToInt32(entrada_minuto.Text);
+                String hora_s;
+                String minuto_s;
+                String hora_e;
+                String minuto_e;
+
+                if (!ValidarEleccion())
+                {
+                    return;
+                }
+
+                if (hora_salida < 10)
+                {
+                    hora_s = "0" + salida_hora.Text;
+                }
+                else
+                {
+                    hora_s = salida_hora.Text;
+                }
+
+                if (minuto_salida < 10)
+                {
+                    minuto_s = "0" + salida_minuto.Text;
+                }
+                else
+                {
+                    minuto_s = salida_minuto.Text;
+                }
+
+
+
+                if (hora_entrada < 10)
+                {
+                    hora_e = "0" + entrada_hora.Text;
+                }
+                else
+                {
+                    hora_e = entrada_hora.Text;
+                }
+
+                if (minuto_entrada < 10)
+                {
+                    minuto_e = "0" + entrada_minuto.Text;
+                }
+                else
+                {
+                    minuto_e = entrada_minuto.Text;
+                }
+
+                tbr.Fecha_entrada = txt_fechaEntrada.Text;
+                tbr.Fecha_salida = txt_fechaSalida.Text;
+                tbr.Hora_entrada = hora_e + ":" + minuto_e;
+                tbr.Hora_salida = hora_s + ":" + minuto_s;
+
+                lista.Add(tbr);
+                form.CargarTabla();
+                ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                "¡Habitación agregada!");
+                ms.Run();
+                ms.Destroy();
+                this.Hide();
+            }
         }
     }
 }

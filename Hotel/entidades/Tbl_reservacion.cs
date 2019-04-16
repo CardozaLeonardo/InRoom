@@ -10,6 +10,7 @@ namespace Hotel.entidades
         private String fecha;
         private int  id_factura;
         private int estado;
+        private int id_huesped;
         public Tbl_reservacion()
         {
         }
@@ -19,5 +20,6 @@ namespace Hotel.entidades
         public int Estado { get => estado; set => estado = value; }
         public string Fecha { get => fecha; set => fecha = value; }
         public int Id_factura { get => id_factura; set => id_factura = value; }
+        public int Id_huesped { get => id_huesped; set => id_huesped = value; }
     }
 }

@@ -236,7 +236,8 @@
   <widget class="Gtk.Window" id="Hotel.fmr_Reservacion" design-size="834 553">
     <property name="MemberName" />
     <property name="Title" translatable="yes">fmr_Reservacion</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="WindowPosition">Center</property>
+    <property name="Modal">True</property>
     <property name="Gravity">Center</property>
     <child>
       <widget class="Gtk.Fixed" id="fixed1">
@@ -290,7 +291,7 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Calendar" id="calendar2">
+          <widget class="Gtk.Calendar" id="cal">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
             <property name="DisplayOptions">35</property>
@@ -387,12 +388,13 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Button" id="button11">
+          <widget class="Gtk.Button" id="btnGuardar">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
             <property name="Type">TextOnly</property>
             <property name="Label" translatable="yes">Guardar</property>
             <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnGuardarClicked" />
           </widget>
           <packing>
             <property name="X">525</property>
@@ -584,41 +586,6 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
-            <property name="MemberName" />
-            <property name="ShadowType">In</property>
-            <child>
-              <widget class="Gtk.TreeView" id="twHabitaciones">
-                <property name="MemberName" />
-                <property name="WidthRequest">350</property>
-                <property name="HeightRequest">400</property>
-                <property name="CanFocus">True</property>
-                <property name="ShowScrollbars">True</property>
-              </widget>
-            </child>
-          </widget>
-          <packing>
-            <property name="X">12</property>
-            <property name="Y">74</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Button" id="btnVerificar">
-            <property name="MemberName" />
-            <property name="WidthRequest">150</property>
-            <property name="HeightRequest">35</property>
-            <property name="CanFocus">True</property>
-            <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">Verificar</property>
-            <property name="UseUnderline">True</property>
-            <signal name="Clicked" handler="OnBtnVerificarClicked" />
-          </widget>
-          <packing>
-            <property name="X">115</property>
-            <property name="Y">510</property>
-          </packing>
-        </child>
-        <child>
           <widget class="Gtk.Label" id="label6">
             <property name="MemberName" />
             <property name="LabelProp" translatable="yes">DETALLE DE RESERVACION</property>
@@ -637,6 +604,7 @@
             <property name="Type">TextOnly</property>
             <property name="Label" translatable="yes">Agregar</property>
             <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnAceptarClicked" />
           </widget>
           <packing>
             <property name="X">468</property>
@@ -668,6 +636,64 @@
           <packing>
             <property name="X">462</property>
             <property name="Y">69</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+            <property name="MemberName" />
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.TreeView" id="twHabitaciones">
+                <property name="MemberName" />
+                <property name="WidthRequest">350</property>
+                <property name="HeightRequest">360</property>
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+                <signal name="CursorChanged" handler="OnTwHabitacionesCursorChanged" />
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="X">34</property>
+            <property name="Y">142</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnVerificar">
+            <property name="MemberName" />
+            <property name="WidthRequest">150</property>
+            <property name="HeightRequest">35</property>
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Verificar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnVerificarClicked" />
+          </widget>
+          <packing>
+            <property name="X">128</property>
+            <property name="Y">533</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="lbl">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Habitación:</property>
+          </widget>
+          <packing>
+            <property name="X">37</property>
+            <property name="Y">87</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtHab">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">False</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">121</property>
+            <property name="Y">83</property>
           </packing>
         </child>
       </widget>
