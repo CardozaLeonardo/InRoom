@@ -7,7 +7,7 @@ namespace Hotel.negocio
 {
     public class ngUsuario
     {
-
+        dtUsuario dtus = new dtUsuario();
         #region metodos
         public bool ngGuardarUser(Tbl_user tus)
         {
@@ -17,7 +17,7 @@ namespace Hotel.negocio
             try
             {
                 //bool existe = false;
-                dtUsuario dtus = new dtUsuario();
+                //dtUsuario dtus = new dtUsuario();
                 //existe = ;
 
                 if(dtus.existeUser(tus))
@@ -75,6 +75,17 @@ namespace Hotel.negocio
             }
 
             return false;
+        }
+
+        public bool VerificarPermisos(Tbl_user tus, String rol)
+        {
+            if(dtus.VerificarPermiso(tus, rol))
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
         }
         #endregion
         public ngUsuario()

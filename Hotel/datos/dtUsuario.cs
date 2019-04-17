@@ -218,6 +218,44 @@ namespace Hotel.datos
 
         }
 
+        public bool VerificarPermiso(Tbl_user tus, String rol)
+        {
+            bool acceder = false;
+            IDataReader idr = null;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("USE `hotel`;");
+            sb.Append("SELECT * FROM vw_usuarios WHERE id_user = " + tus.Id_user + " AND rol = '" + rol + "';");
+
+            try
+            {
+                con.AbrirConexion();
+                idr = con.Leer(CommandType.Text, sb.ToString());
+
+                if (idr.Read())
+                {
+                    acceder = true;
+                }
+
+                return acceder;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+                idr.Close();
+                return acceder;
+                throw;
+
+            }
+            finally
+            {
+                con.CerrarConexion();
+
+            }
+
+
+        }
+
         #endregion
         public dtUsuario()
         {

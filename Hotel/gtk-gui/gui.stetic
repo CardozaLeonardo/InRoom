@@ -237,7 +237,6 @@
     <property name="MemberName" />
     <property name="Title" translatable="yes">fmr_Reservacion</property>
     <property name="WindowPosition">Center</property>
-    <property name="Modal">True</property>
     <property name="Gravity">Center</property>
     <child>
       <widget class="Gtk.Fixed" id="fixed1">
@@ -286,19 +285,8 @@
             <signal name="Clicked" handler="OnBtnElegirHuespedClicked" />
           </widget>
           <packing>
-            <property name="X">22</property>
+            <property name="X">29</property>
             <property name="Y">145</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Calendar" id="cal">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="DisplayOptions">35</property>
-          </widget>
-          <packing>
-            <property name="X">440</property>
-            <property name="Y">79</property>
           </packing>
         </child>
         <child>
@@ -318,60 +306,86 @@
           <placeholder />
         </child>
         <child>
-          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+          <widget class="Gtk.Label" id="label1">
             <property name="MemberName" />
-            <property name="ShadowType">In</property>
-            <child>
-              <widget class="Gtk.TreeView" id="twHabitaciones">
-                <property name="MemberName" />
-                <property name="WidthRequest">300</property>
-                <property name="HeightRequest">200</property>
-                <property name="CanFocus">True</property>
-                <property name="ShowScrollbars">True</property>
-              </widget>
-            </child>
+            <property name="LabelProp" translatable="yes">Nombres:</property>
           </widget>
           <packing>
-            <property name="X">28</property>
-            <property name="Y">253</property>
+            <property name="X">29</property>
+            <property name="Y">193</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.ComboBoxEntry" id="comboboxentry2">
+          <widget class="Gtk.Entry" id="txtNombres">
             <property name="MemberName" />
-            <property name="IsTextCombo">True</property>
-            <property name="Items" translatable="yes" />
+            <property name="WidthRequest">180</property>
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
           </widget>
           <packing>
-            <property name="X">27</property>
-            <property name="Y">212</property>
+            <property name="X">136</property>
+            <property name="Y">191</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.ToggleButton" id="btn_agregarHab">
+          <widget class="Gtk.Entry" id="txtApellidos">
+            <property name="MemberName" />
+            <property name="WidthRequest">180</property>
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">136</property>
+            <property name="Y">222</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtCedula">
+            <property name="MemberName" />
+            <property name="WidthRequest">180</property>
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">136</property>
+            <property name="Y">255</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label3">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Cédula:</property>
+          </widget>
+          <packing>
+            <property name="X">29</property>
+            <property name="Y">256</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label2">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Apellidos:</property>
+          </widget>
+          <packing>
+            <property name="X">29</property>
+            <property name="Y">226</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnCancelar">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
             <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">Agregar habitación</property>
+            <property name="Label" translatable="yes">Cancelar</property>
             <property name="UseUnderline">True</property>
-            <signal name="Clicked" handler="OnBtnAgregarHabClicked" />
+            <signal name="Clicked" handler="OnBtnCancelarClicked" />
           </widget>
           <packing>
-            <property name="X">437</property>
-            <property name="Y">317</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.ToggleButton" id="btn_removerHab">
-            <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">Remover habitación</property>
-            <property name="UseUnderline">True</property>
-          </widget>
-          <packing>
-            <property name="X">437</property>
-            <property name="Y">363</property>
+            <property name="X">705</property>
+            <property name="Y">464</property>
           </packing>
         </child>
         <child>
@@ -383,8 +397,8 @@
             <property name="UseUnderline">True</property>
           </widget>
           <packing>
-            <property name="X">438</property>
-            <property name="Y">429</property>
+            <property name="X">513</property>
+            <property name="Y">469</property>
           </packing>
         </child>
         <child>
@@ -397,21 +411,126 @@
             <signal name="Clicked" handler="OnBtnGuardarClicked" />
           </widget>
           <packing>
-            <property name="X">525</property>
-            <property name="Y">429</property>
+            <property name="X">612</property>
+            <property name="Y">469</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Button" id="button12">
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
             <property name="MemberName" />
-            <property name="CanFocus">True</property>
-            <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">Cancelar</property>
-            <property name="UseUnderline">True</property>
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.TreeView" id="twHabitaciones">
+                <property name="MemberName" />
+                <property name="WidthRequest">430</property>
+                <property name="HeightRequest">200</property>
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+                <signal name="CursorChanged" handler="OnTwHabitacionesCursorChanged" />
+              </widget>
+            </child>
           </widget>
           <packing>
-            <property name="X">606</property>
-            <property name="Y">428</property>
+            <property name="X">23</property>
+            <property name="Y">305</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ToggleButton" id="btn_removerHab">
+            <property name="MemberName" />
+            <property name="WidthRequest">150</property>
+            <property name="HeightRequest">30</property>
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Remover habitación</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnRemoverHabClicked" />
+          </widget>
+          <packing>
+            <property name="X">610</property>
+            <property name="Y">404</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtNumeroFac">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">635</property>
+            <property name="Y">92</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label4">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Factura:</property>
+          </widget>
+          <packing>
+            <property name="X">538</property>
+            <property name="Y">96</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label5">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Fecha:</property>
+          </widget>
+          <packing>
+            <property name="X">537</property>
+            <property name="Y">132</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtFecha">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">636</property>
+            <property name="Y">130</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ToggleButton" id="btn_agregarHab">
+            <property name="MemberName" />
+            <property name="WidthRequest">150</property>
+            <property name="HeightRequest">30</property>
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Agregar habitación</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnAgregarHabClicked" />
+          </widget>
+          <packing>
+            <property name="X">610</property>
+            <property name="Y">351</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtNumHab">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">False</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">637</property>
+            <property name="Y">183</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label6">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Num Hab.</property>
+          </widget>
+          <packing>
+            <property name="X">537</property>
+            <property name="Y">185</property>
           </packing>
         </child>
       </widget>
@@ -420,8 +539,9 @@
   <widget class="Gtk.Window" id="Hotel.fmr_detalleReserv" design-size="811 596">
     <property name="MemberName" />
     <property name="Title" translatable="yes">fmr_detalleReserv</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="WindowPosition">Center</property>
     <property name="Modal">True</property>
+    <property name="Gravity">Center</property>
     <child>
       <widget class="Gtk.Fixed" id="fixed3">
         <property name="MemberName" />
@@ -821,7 +941,7 @@
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="Hotel.frm_reservaciones" design-size="792 478">
+  <widget class="Gtk.Window" id="Hotel.frm_reservaciones" design-size="792 511">
     <property name="MemberName" />
     <property name="Title" translatable="yes">frm_reservaciones</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -840,49 +960,7 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Label" id="label3">
-            <property name="MemberName" />
-            <property name="LabelProp" translatable="yes">Buscar</property>
-          </widget>
-          <packing>
-            <property name="X">433</property>
-            <property name="Y">124</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Entry" id="txtBuscar">
-            <property name="MemberName" />
-            <property name="WidthRequest">190</property>
-            <property name="CanFocus">True</property>
-            <property name="IsEditable">True</property>
-            <property name="InvisibleChar">•</property>
-          </widget>
-          <packing>
-            <property name="X">501</property>
-            <property name="Y">120</property>
-          </packing>
-        </child>
-        <child>
           <placeholder />
-        </child>
-        <child>
-          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
-            <property name="MemberName" />
-            <property name="ShadowType">In</property>
-            <child>
-              <widget class="Gtk.TreeView" id="twReserv">
-                <property name="MemberName" />
-                <property name="WidthRequest">370</property>
-                <property name="HeightRequest">330</property>
-                <property name="CanFocus">True</property>
-                <property name="ShowScrollbars">True</property>
-              </widget>
-            </child>
-          </widget>
-          <packing>
-            <property name="X">11</property>
-            <property name="Y">89</property>
-          </packing>
         </child>
         <child>
           <widget class="Gtk.Label" id="label1">
@@ -895,48 +973,24 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Button" id="btnBuscar">
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
             <property name="MemberName" />
-            <property name="WidthRequest">120</property>
-            <property name="HeightRequest">30</property>
-            <property name="CanFocus">True</property>
-            <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">Buscar</property>
-            <property name="UseUnderline">True</property>
+            <property name="WidthRequest">500</property>
+            <property name="HeightRequest">200</property>
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.TreeView" id="twReserv">
+                <property name="MemberName" />
+                <property name="WidthRequest">370</property>
+                <property name="HeightRequest">330</property>
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+              </widget>
+            </child>
           </widget>
           <packing>
-            <property name="X">528</property>
-            <property name="Y">162</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Button" id="btnModificar">
-            <property name="MemberName" />
-            <property name="WidthRequest">120</property>
-            <property name="HeightRequest">30</property>
-            <property name="CanFocus">True</property>
-            <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">Modificar</property>
-            <property name="UseUnderline">True</property>
-          </widget>
-          <packing>
-            <property name="X">425</property>
-            <property name="Y">230</property>
-          </packing>
-        </child>
-        <child>
-          <widget class="Gtk.Button" id="btnFinalizar">
-            <property name="MemberName" />
-            <property name="WidthRequest">120</property>
-            <property name="HeightRequest">30</property>
-            <property name="CanFocus">True</property>
-            <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">Finalizar</property>
-            <property name="UseUnderline">True</property>
-          </widget>
-          <packing>
-            <property name="X">427</property>
-            <property name="Y">285</property>
+            <property name="X">41</property>
+            <property name="Y">213</property>
           </packing>
         </child>
         <child>
@@ -950,8 +1004,76 @@
             <property name="UseUnderline">True</property>
           </widget>
           <packing>
-            <property name="X">428</property>
-            <property name="Y">336</property>
+            <property name="X">593</property>
+            <property name="Y">342</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnModificar">
+            <property name="MemberName" />
+            <property name="WidthRequest">120</property>
+            <property name="HeightRequest">30</property>
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Modificar</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">596</property>
+            <property name="Y">236</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnFinalizar">
+            <property name="MemberName" />
+            <property name="WidthRequest">120</property>
+            <property name="HeightRequest">30</property>
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Finalizar</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">598</property>
+            <property name="Y">287</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label3">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Buscar</property>
+          </widget>
+          <packing>
+            <property name="X">595</property>
+            <property name="Y">159</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnBuscar">
+            <property name="MemberName" />
+            <property name="WidthRequest">120</property>
+            <property name="HeightRequest">30</property>
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Buscar</property>
+            <property name="UseUnderline">True</property>
+          </widget>
+          <packing>
+            <property name="X">412</property>
+            <property name="Y">165</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtBuscar">
+            <property name="MemberName" />
+            <property name="WidthRequest">190</property>
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">39</property>
+            <property name="Y">173</property>
           </packing>
         </child>
       </widget>
@@ -960,7 +1082,8 @@
   <widget class="Gtk.Window" id="Hotel.frm_huespedReserv" design-size="651 504">
     <property name="MemberName" />
     <property name="Title" translatable="yes">frm_huespedReserv</property>
-    <property name="WindowPosition">CenterOnParent</property>
+    <property name="WindowPosition">Center</property>
+    <property name="Gravity">Center</property>
     <child>
       <widget class="Gtk.Fixed" id="fixed1">
         <property name="MemberName" />

@@ -22,7 +22,7 @@ namespace Hotel.datos
             sb.Clear();
             sb.Append("USE `hotel`;");
             sb.Append("INSERT INTO tbl_reservacion (num_reserv, fecha, id_huesped, estado) VALUES");
-            sb.Append("(" + tbr.Num_reserv + ",'" + tbr.Fecha + "'," + tbr.Id_factura + "," + 1 + ");");
+            sb.Append("(" + tbr.Num_reserv + ",'" + tbr.Fecha + "'," + tbr.Id_huesped + "," + 1 + ");");
 
             try
             {
@@ -127,6 +127,45 @@ namespace Hotel.datos
             }
 
             //return id;
+        }
+
+        public Int32 GetIdReserv(int num)
+        {
+            IDataReader idr = null;
+            int id = 2;
+            sb.Clear();
+            sb.Append("Use `hotel`;");
+            sb.Append("SELECT id_reservacion FROM tbl_reservacion WHERE num_reserv = " + num + ";");
+
+            try
+            {
+                con.AbrirConexion();
+                idr = con.Leer(CommandType.Text, sb.ToString());
+                if (idr.Read())
+                {
+                    id = (Int32)idr["id_reservacion"];
+                    Console.WriteLine(id);
+
+                }
+
+                idr.Close();
+                return id;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+                ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
+                "Error: " + e.Message);
+                Console.WriteLine("EEEEEEEEEEEEERRR: " + id);
+                ms.Run();
+                ms.Destroy();
+                throw;
+            }
+            finally
+            {
+                con.CerrarConexion();
+            }
         }
 
         //public bool ActualizarReservacion(Tbl_reservacion tbr)

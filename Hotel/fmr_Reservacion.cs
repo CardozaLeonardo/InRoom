@@ -11,10 +11,12 @@ namespace Hotel
     public partial class fmr_Reservacion : Gtk.Window
     {
         List<Tbl_detalleReserv> listaHabitaciones = new List<Tbl_detalleReserv>();
+        dtDetalleReserv ddr = new dtDetalleReserv();
         dtReservacion dtr = new dtReservacion();
         Tbl_reservacion tbr = new Tbl_reservacion();
         int id = 0;
         Tbl_huesped tbh = new Tbl_huesped();
+        MessageDialog ms = null;
 
         public fmr_Reservacion() :
                 base(Gtk.WindowType.Toplevel)
@@ -22,6 +24,8 @@ namespace Hotel
             this.Build();
             dtr = new dtReservacion();
             this.txtNum.Text = Convert.ToString(dtr.GetNumReserv() + 1);
+            txtFecha.Text = ObtenerFecha();
+
         }
 
         protected void OnBtnAgregarHabClicked(object sender, EventArgs e)
@@ -34,7 +38,10 @@ namespace Hotel
 
         public void ActualizarDatos()
         {
-            lbHuesped.Text = "Huesped: " + tbh.Cedula;
+            //lbHuesped.Text = "Huesped: " + tbh.Cedula;
+            txtNombres.Text = tbh.Nombres;
+            txtApellidos.Text = tbh.Apellidos;
+            txtCedula.Text = tbh.Cedula;
         }
 
         protected void OnBtnElegirHuespedClicked(object sender, EventArgs e)
@@ -66,19 +73,126 @@ namespace Hotel
         {
             tbr.Num_reserv = Convert.ToInt32(this.txtNum.Text);
             tbr.Id_huesped = tbh.Id_huesped;
-            int mes = cal.Month;
-            String month = "";
-            mes++;
-            if(mes < 10)
+
+
+            tbr.Fecha = ObtenerFecha();
+
+            if(!txtCedula.Text.Equals(""))
             {
-                month = "0" + Convert.ToString(mes);
+
+                if (dtr.GuardarReservacion(tbr))
+                {
+                    
+                    id = dtr.GetIdReserv(tbr.Num_reserv);
+                    
+                    foreach(Tbl_detalleReserv dres in listaHabitaciones)
+                    {
+                        dres.Id_reservacion = id;
+                    }
+                    
+                    if (ddr.GuardarDetalleReserv(listaHabitaciones))
+                    {
+                        ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                                               "¡Reservación guardada!");
+                        ms.Run();
+                        ms.Destroy();
+                        this.Hide();
+                    }
+                }
+                else
+                {
+                    ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
+                                           "¡Error al guardar!");
+                    ms.Run();
+                    ms.Destroy();
+                }
+            }else
+            {
+                ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok,
+                                               "Hace falta escoger el huésped");
+                ms.Run();
+                ms.Destroy();
+            }
+        }
+
+        public String ObtenerFecha()
+        {
+            String fecha = "";
+            DateTime dt = DateTime.Today;
+            fecha += dt.Year.ToString();
+            //int dia = dt.Day;
+
+            if(dt.Month < 10)
+            {
+                fecha += "-0" + dt.Month.ToString();
             }
             else
             {
-                month = Convert.ToString(mes);
+                fecha += "-" + dt.Month.ToString();
             }
-            tbr.Fecha = cal.Year.ToString() + "-" + month
-            if(dtr.GuardarReservacion())
+
+
+            if (dt.Day < 10) 
+            { 
+               fecha += "-0" + dt.Day.ToString();
+
+            }
+            else
+            {
+                fecha += "-" + dt.Day;
+            }
+            return fecha;
+        }
+
+        protected void OnBtnRemoverHabClicked(object sender, EventArgs e)
+        {
+            bool encontrado = false;
+            int index = -1;
+
+            if(!txtNumHab.Text.Equals("") )
+            {
+                if(!(listaHabitaciones.Count == 0))
+                {
+                    ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok,
+                                               "Agregue al menos una habitación");
+                    ms.Run();
+                    ms.Destroy();
+                    return;
+                }
+
+                foreach (Tbl_detalleReserv tbdr in listaHabitaciones)
+                {
+                    if(tbdr.Numero == Convert.ToString(txtNumHab.Text))
+                    {
+                        encontrado = true;
+                        index = listaHabitaciones.IndexOf(tbdr);
+                    }
+                }
+
+                if(encontrado)
+                {
+                    listaHabitaciones.RemoveAt(index);
+                    CargarTabla();
+                }
+            }
+        }
+
+        protected void OnBtnCancelarClicked(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        protected void OnTwHabitacionesCursorChanged(object sender, EventArgs e)
+        {
+            TreeSelection seleccion = (sender as TreeView).Selection;
+            TreeIter iter;
+            TreeModel model;
+            if (seleccion.GetSelected(out model, out iter))
+            {
+
+                txtNumHab.Text = model.GetValue(iter, 1).ToString();
+
+            }
         }
     }
 }
