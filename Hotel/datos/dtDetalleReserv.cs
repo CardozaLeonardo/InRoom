@@ -124,15 +124,18 @@ namespace Hotel.datos
             }
         }
 
-        public ListStore listarDetallesReserv(Tbl_detalleReserv tdr)
+        public ListStore listarDetallesReserv(int id_reservacion)
         {
             ListStore datos = new ListStore(typeof(string),
-                typeof(string), typeof(string), typeof(string), typeof(string));
+                typeof(string), typeof(string), typeof(string), typeof(string), typeof(string), typeof(string));
+
+
             IDataReader idr = null;
             sb.Clear();
             sb.Append("USE `hotel`;");
-            sb.Append("SELECT h.numero, d.fecha_entrada, d.fecha_salida, d.hora_entrada, d.hora salida " +
-            	"FROM tbl_detalleReserv d INNER JOIN tbl_habitacion h ON d.id_habitacion = h.id_habitacion;");
+            sb.Append("SELECT h.id_habitacion, h.numero, h.descripcion, d.fecha_entrada, d.fecha_salida, d.hora_entrada, d.hora_salida " +
+            	"FROM tbl_detalleReserv d INNER JOIN vw_habitaciones h ON d.id_habitacion = h.id_habitacion "
+                + "WHERE d.id_reservacion = " + id_reservacion + ";");
 
             try
             {
@@ -142,10 +145,12 @@ namespace Hotel.datos
                 while (idr.Read())
                 {
                     datos.AppendValues(idr[0].ToString(), idr[1].ToString(), idr[2].ToString(),
-                    idr[3].ToString(), idr[4].ToString());
+                    idr[3].ToString(), idr[4].ToString(), idr[5].ToString(), idr[6].ToString());
 
 
                 }
+
+
 
                 return datos;
             }

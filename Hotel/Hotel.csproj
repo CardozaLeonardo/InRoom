@@ -143,6 +143,8 @@
     <Compile Include="frm_huespedReserv.cs" />
     <Compile Include="gtk-gui\Hotel.frm_huespedReserv.cs" />
     <Compile Include="datos\dtHuesped.cs" />
+    <Compile Include="entidades\Vw_reservaciones.cs" />
+    <Compile Include="entidades\Vw_detalleReserv.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="entidades\" />

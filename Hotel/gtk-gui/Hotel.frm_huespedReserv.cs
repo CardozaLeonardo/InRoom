@@ -38,7 +38,8 @@ namespace Hotel
 			// Widget Hotel.frm_huespedReserv
 			this.Name = "Hotel.frm_huespedReserv";
 			this.Title = global::Mono.Unix.Catalog.GetString("frm_huespedReserv");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
+			this.Gravity = ((global::Gdk.Gravity)(5));
 			// Container child Hotel.frm_huespedReserv.Gtk.Container+ContainerChild
 			this.fixed1 = new global::Gtk.Fixed();
 			this.fixed1.Name = "fixed1";

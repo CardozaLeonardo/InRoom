@@ -1,18 +1,17 @@
 ﻿<Properties StartupConfiguration="{80F444DB-744C-4EF0-89F6-00A5E0A078D2}|Default">
   <MonoDevelop.Ide.ItemProperties.Hotel PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Hotel/frm_reservaciones.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Hotel/datos/dtDetalleReserv.cs">
     <Files>
-      <File FileName="Hotel/datos/dtReservacion.cs" Line="122" Column="23" />
-      <File FileName="Hotel/datos/dtHuesped.cs" Line="57" Column="10" />
-      <File FileName="../Seguridad/Seguridad/frmUsuario.cs" Line="72" Column="18" />
-      <File FileName="Hotel/fmr_Reservacion.cs" Line="170" Column="9" />
-      <File FileName="Hotel/fmr_detalleReserv.cs" Line="344" Column="17" />
-      <File FileName="Hotel/datos/dtDetalleReserv.cs" Line="33" Column="16" />
-      <File FileName="Hotel/datos/dtEmisorTarjeta.cs" Line="7" Column="1" />
-      <File FileName="Hotel/datos/dtUsuario.cs" Line="235" Column="18" />
-      <File FileName="Hotel/negocio/ngUsuario.cs" Line="89" Column="10" />
+      <File FileName="../Seguridad/Seguridad/frmUsuario.cs" Line="1" Column="1" />
+      <File FileName="Hotel/datos/dtUsuario.cs" Line="11" Column="18" />
+      <File FileName="Hotel/negocio/ngUsuario.cs" Line="85" Column="18" />
       <File FileName="Hotel/frm_huespedReserv.cs" Line="72" Column="29" />
-      <File FileName="Hotel/frm_reservaciones.cs" Line="1" Column="1" />
+      <File FileName="Hotel/frm_reservaciones.cs" Line="66" Column="13" />
+      <File FileName="Hotel/datos/dtHabitaciones.cs" Line="1" Column="1" />
+      <File FileName="Hotel/gtk-gui/MainWindow.cs" Line="138" Column="26" />
+      <File FileName="Hotel/fmr_Reservacion.cs" Line="106" Column="14" />
+      <File FileName="Hotel/datos/dtDetalleReserv.cs" Line="135" Column="33" />
+      <File FileName="Hotel/datos/dtReservacion.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

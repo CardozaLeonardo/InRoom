@@ -14,7 +14,9 @@ namespace Hotel
         dtDetalleReserv ddr = new dtDetalleReserv();
         dtReservacion dtr = new dtReservacion();
         Tbl_reservacion tbr = new Tbl_reservacion();
+        Vw_reservaciones vr = null;
         int id = 0;
+        bool edicion = false;
         Tbl_huesped tbh = new Tbl_huesped();
         MessageDialog ms = null;
 
@@ -26,6 +28,29 @@ namespace Hotel
             this.txtNum.Text = Convert.ToString(dtr.GetNumReserv() + 1);
             txtFecha.Text = ObtenerFecha();
 
+        }
+
+        public fmr_Reservacion(int id_reservacion) :
+                base(Gtk.WindowType.Toplevel)
+        {
+            this.Build();
+            dtr = new dtReservacion();
+
+            vr = dtr.ObtenerReservacion(id_reservacion);
+            edicion = true;
+
+            txtNum.Text = Convert.ToString(vr.Numero);
+            txtFecha.Text = Convert.ToString(vr.Fecha);
+            txtNombres.Text = vr.Nombres;
+            txtApellidos.Text = vr.Apellidos;
+            txtCedula.Text = vr.Cedula;
+
+
+
+            //this.txtNum.Text = Convert.ToString(dtr.GetNumReserv() + 1);
+            //txtFecha.Text = ObtenerFecha();
+            
+            CargarTabla(id_reservacion);
         }
 
         protected void OnBtnAgregarHabClicked(object sender, EventArgs e)
@@ -61,6 +86,18 @@ namespace Hotel
                 det.Fecha_entrada + " " + det.Hora_entrada, det.Fecha_salida + " " + det.Hora_salida);
             }
             twHabitaciones.Model = datos;
+
+            string[] titulos = { "ID", "Numero", "Tipo", "Entrada", "Salida" };
+            for (int i = 0; i < titulos.Length; i++)
+            {
+                twHabitaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+            }
+        }
+
+        public void CargarTabla(int id_reservacion)
+        {
+
+            twHabitaciones.Model = ddr.listarDetallesReserv(id_reservacion);
 
             string[] titulos = { "ID", "Numero", "Tipo", "Entrada", "Salida" };
             for (int i = 0; i < titulos.Length; i++)

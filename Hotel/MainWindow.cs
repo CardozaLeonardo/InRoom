@@ -62,4 +62,10 @@ public partial class MainWindow : Gtk.Window
         frm_EmisorTarjeta fet = new frm_EmisorTarjeta();
         fet.Show();
     }
+
+    protected void OnRegistroActionActivated(object sender, EventArgs e)
+    {
+        frm_reservaciones frm = new frm_reservaciones();
+        frm.Show();
+    }
 }

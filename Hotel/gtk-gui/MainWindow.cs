@@ -39,6 +39,8 @@ public partial class MainWindow
 
 	private global::Gtk.Action EmisoresAction;
 
+	private global::Gtk.Action RegistroAction;
+
 	private global::Gtk.Fixed fixed1;
 
 	private global::Gtk.MenuBar menubar1;
@@ -98,6 +100,9 @@ public partial class MainWindow
 		this.EmisoresAction = new global::Gtk.Action("EmisoresAction", global::Mono.Unix.Catalog.GetString("Emisores"), null, null);
 		this.EmisoresAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Emisores");
 		w1.Add(this.EmisoresAction, null);
+		this.RegistroAction = new global::Gtk.Action("RegistroAction", global::Mono.Unix.Catalog.GetString("Registro"), null, null);
+		this.RegistroAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Registro");
+		w1.Add(this.RegistroAction, null);
 		this.UIManager.InsertActionGroup(w1, 0);
 		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
@@ -111,7 +116,7 @@ public partial class MainWindow
 		this.fixed1.Name = "fixed1";
 		this.fixed1.HasWindow = false;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.UIManager.AddUiFromString(@"<ui><menubar name='menubar1'><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='CerrarSesinAction' action='CerrarSesinAction'/><menuitem name='SalirAction' action='SalirAction'/></menu><menu name='GestinAction' action='GestinAction'><menuitem name='HuespedesAction' action='HuespedesAction'/><menuitem name='ProductosAction' action='ProductosAction'/><menuitem name='HabitacionesAction' action='HabitacionesAction'/><menu name='TarjetasAction' action='TarjetasAction'><menuitem name='EmisoresAction' action='EmisoresAction'/></menu></menu><menu name='UsuariosAction' action='UsuariosAction'><menuitem name='UsuariosAction1' action='UsuariosAction1'/><menuitem name='RolesAction' action='RolesAction'/><menuitem name='OpcionesAction1' action='OpcionesAction1'/></menu><menu name='ReservacionesAction' action='ReservacionesAction'><menuitem name='NuevaReservacinAction' action='NuevaReservacinAction'/></menu></menubar></ui>");
+		this.UIManager.AddUiFromString(@"<ui><menubar name='menubar1'><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='CerrarSesinAction' action='CerrarSesinAction'/><menuitem name='SalirAction' action='SalirAction'/></menu><menu name='GestinAction' action='GestinAction'><menuitem name='HuespedesAction' action='HuespedesAction'/><menuitem name='ProductosAction' action='ProductosAction'/><menuitem name='HabitacionesAction' action='HabitacionesAction'/><menu name='TarjetasAction' action='TarjetasAction'><menuitem name='EmisoresAction' action='EmisoresAction'/></menu></menu><menu name='UsuariosAction' action='UsuariosAction'><menuitem name='UsuariosAction1' action='UsuariosAction1'/><menuitem name='RolesAction' action='RolesAction'/><menuitem name='OpcionesAction1' action='OpcionesAction1'/></menu><menu name='ReservacionesAction' action='ReservacionesAction'><menuitem name='NuevaReservacinAction' action='NuevaReservacinAction'/><menuitem name='RegistroAction' action='RegistroAction'/></menu></menubar></ui>");
 		this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menubar1")));
 		this.menubar1.Name = "menubar1";
 		this.fixed1.Add(this.menubar1);
@@ -131,6 +136,8 @@ public partial class MainWindow
 		this.HabitacionesAction.Activated += new global::System.EventHandler(this.OnHabitacionesActionActivated);
 		this.NuevaReservacinAction.Activated += new global::System.EventHandler(this.OnNuevaReservacinActionActivated);
 		this.UsuariosAction1.Activated += new global::System.EventHandler(this.OnUsuariosAction1Activated);
+		//this.TarjetasAction.Activated += new global::System.EventHandler(this.OnTarjetasActionActivated);
 		this.EmisoresAction.Activated += new global::System.EventHandler(this.OnEmisoresActionActivated);
+		this.RegistroAction.Activated += new global::System.EventHandler(this.OnRegistroActionActivated);
 	}
 }
