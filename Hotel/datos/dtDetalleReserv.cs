@@ -57,14 +57,14 @@ namespace Hotel.datos
 
         }
 
-        public bool EliminarDetalleReserv(Tbl_detalleReserv tdr)
+        public bool EliminarDetalleReserv(int id_dt)
         {
             bool eliminado = false;
             int x = 0;
 
             sb.Clear();
             sb.Append("USE `hotel`;");
-            sb.Append("DELETE FROM tbl_detalleReserv WHERE id_detalleReserv = " + tdr.Id_detalleReserv + ";");
+            sb.Append("DELETE FROM tbl_detalleReserv WHERE id_detalleReserv = " + id_dt + ";");
 
             try
             {
@@ -124,18 +124,17 @@ namespace Hotel.datos
             }
         }
 
-        public ListStore listarDetallesReserv(int id_reservacion)
+        public List<Vw_detalleReserv> listarDetallesReserv(int id_reservacion)
         {
-            ListStore datos = new ListStore(typeof(string),
-                typeof(string), typeof(string), typeof(string), typeof(string), typeof(string), typeof(string));
+            List<Vw_detalleReserv> detList = new List<Vw_detalleReserv>();
 
 
+            Vw_detalleReserv vdr = null;
             IDataReader idr = null;
             sb.Clear();
             sb.Append("USE `hotel`;");
-            sb.Append("SELECT h.id_habitacion, h.numero, h.descripcion, d.fecha_entrada, d.fecha_salida, d.hora_entrada, d.hora_salida " +
-            	"FROM tbl_detalleReserv d INNER JOIN vw_habitaciones h ON d.id_habitacion = h.id_habitacion "
-                + "WHERE d.id_reservacion = " + id_reservacion + ";");
+            sb.Append("SELECT * " +
+                "FROM vw_detalleReserv WHERE id_reservacion = " + id_reservacion + ";");
 
             try
             {
@@ -144,15 +143,24 @@ namespace Hotel.datos
 
                 while (idr.Read())
                 {
-                    datos.AppendValues(idr[0].ToString(), idr[1].ToString(), idr[2].ToString(),
-                    idr[3].ToString(), idr[4].ToString(), idr[5].ToString(), idr[6].ToString());
 
+                    vdr = new Vw_detalleReserv();
+                    vdr.Id_detalleReserv =  Convert.ToInt32(idr[0].ToString());
+                    vdr.Id_reservacion = Convert.ToInt32(idr[1].ToString());
+                    vdr.Id_habitacion = Convert.ToInt32(idr[2].ToString());
+                    vdr.NumeroHab = idr[3].ToString();
+                    vdr.Descripcion = idr[4].ToString();
+                    vdr.FechaEntrada = idr[5].ToString();
+                    vdr.FechaSalida = idr[6].ToString();
+                    vdr.HoraEntrada = idr[7].ToString();
+                    vdr.HoraSalida = idr[8].ToString();
 
+                    detList.Add(vdr);
                 }
 
 
 
-                return datos;
+                return detList;
             }
             catch(Exception e)
             {

@@ -85,6 +85,7 @@ namespace Hotel
                 datos.AppendValues(Convert.ToString(det.Id_habitacion), det.Numero, det.TipoHabitacion,
                 det.Fecha_entrada + " " + det.Hora_entrada, det.Fecha_salida + " " + det.Hora_salida);
             }
+
             twHabitaciones.Model = datos;
 
             string[] titulos = { "ID", "Numero", "Tipo", "Entrada", "Salida" };
@@ -96,8 +97,24 @@ namespace Hotel
 
         public void CargarTabla(int id_reservacion)
         {
+            List<Vw_detalleReserv> lista = ddr.listarDetallesReserv(id_reservacion);
 
-            twHabitaciones.Model = ddr.listarDetallesReserv(id_reservacion);
+            ListStore datos = new ListStore(typeof(string), typeof(string), typeof(string),
+            typeof(string), typeof(string));
+
+            foreach(Vw_detalleReserv vdr in lista)
+            {
+                datos.AppendValues(
+                vdr.Id_habitacion,
+                vdr.NumeroHab,
+                vdr.Descripcion,
+                vdr.FechaEntrada + " " + 
+                vdr.HoraEntrada,
+                vdr.FechaSalida + " " +
+                vdr.HoraSalida);
+            }
+
+            twHabitaciones.Model = datos;
 
             string[] titulos = { "ID", "Numero", "Tipo", "Entrada", "Salida" };
             for (int i = 0; i < titulos.Length; i++)
@@ -186,32 +203,46 @@ namespace Hotel
             bool encontrado = false;
             int index = -1;
 
-            if(!txtNumHab.Text.Equals("") )
-            {
-                if(!(listaHabitaciones.Count == 0))
-                {
-                    ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok,
-                                               "Agregue al menos una habitación");
-                    ms.Run();
-                    ms.Destroy();
-                    return;
-                }
 
-                foreach (Tbl_detalleReserv tbdr in listaHabitaciones)
+            ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo, 
+                "¿Desea eliminar esta habitación?");
+
+            int i = ms.Run();
+            ms.Destroy();
+
+
+
+            if(i == -8)
+            {
+
+                if (!txtNumHab.Text.Equals("") )
                 {
-                    if(tbdr.Numero == Convert.ToString(txtNumHab.Text))
+                    if(!(listaHabitaciones.Count == 0))
                     {
-                        encontrado = true;
-                        index = listaHabitaciones.IndexOf(tbdr);
+                        ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok,
+                                                   "No hay habitaciones");
+                        ms.Run();
+                        ms.Destroy();
+                        return;
+                    }
+
+                    foreach (Tbl_detalleReserv tbdr in listaHabitaciones)
+                    {
+                        if(tbdr.Numero == Convert.ToString(txtNumHab.Text))
+                        {
+                            encontrado = true;
+                            index = listaHabitaciones.IndexOf(tbdr);
+                        }
+                    }
+
+                    if(encontrado)
+                    {
+                        listaHabitaciones.RemoveAt(index);
+                        CargarTabla();
                     }
                 }
-
-                if(encontrado)
-                {
-                    listaHabitaciones.RemoveAt(index);
-                    CargarTabla();
-                }
             }
+
         }
 
         protected void OnBtnCancelarClicked(object sender, EventArgs e)
