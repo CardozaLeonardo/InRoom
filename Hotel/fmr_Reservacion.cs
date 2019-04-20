@@ -10,7 +10,7 @@ namespace Hotel
 {
     public partial class fmr_Reservacion : Gtk.Window
     {
-        List<Tbl_detalleReserv> listaHabitaciones = new List<Tbl_detalleReserv>();
+        List<Vw_detalleReserv> listaHabitaciones = new List<Vw_detalleReserv>();
         dtDetalleReserv ddr = new dtDetalleReserv();
         dtReservacion dtr = new dtReservacion();
         Tbl_reservacion tbr = new Tbl_reservacion();
@@ -19,7 +19,7 @@ namespace Hotel
         bool edicion = false;
         Tbl_huesped tbh = new Tbl_huesped();
         MessageDialog ms = null;
-
+        List<Vw_detalleReserv> lista = null;
 
         public fmr_Reservacion() :
                 base(Gtk.WindowType.Toplevel)
@@ -81,10 +81,10 @@ namespace Hotel
             ListStore datos = new ListStore(typeof(string), typeof(string), typeof(string),
             typeof(string), typeof(string));
 
-            foreach(Tbl_detalleReserv det in listaHabitaciones)
+            foreach(Vw_detalleReserv det in listaHabitaciones)
             {
-                datos.AppendValues(Convert.ToString(det.Id_habitacion), det.Numero, det.TipoHabitacion,
-                det.Fecha_entrada + " " + det.Hora_entrada, det.Fecha_salida + " " + det.Hora_salida);
+                datos.AppendValues(Convert.ToString(det.Id_habitacion), det.NumeroHab, det.Descripcion,
+                det.FechaEntrada + " " + det.HoraEntrada, det.FechaSalida + " " + det.HoraSalida);
             }
 
             twHabitaciones.Model = datos;
@@ -98,12 +98,12 @@ namespace Hotel
 
         public void CargarTabla(int id_reservacion)
         {
-            List<Vw_detalleReserv> lista = ddr.listarDetallesReserv(id_reservacion);
+            listaHabitaciones = ddr.listarDetallesReserv(id_reservacion);
 
             ListStore datos = new ListStore(typeof(string), typeof(string), typeof(string),
             typeof(string), typeof(string));
 
-            foreach(Vw_detalleReserv vdr in lista)
+            foreach(Vw_detalleReserv vdr in listaHabitaciones)
             {
                 datos.AppendValues(
                 vdr.Id_habitacion,
@@ -140,7 +140,7 @@ namespace Hotel
                     
                     id = dtr.GetIdReserv(tbr.Num_reserv);
                     
-                    foreach(Tbl_detalleReserv dres in listaHabitaciones)
+                    foreach(Vw_detalleReserv dres in listaHabitaciones)
                     {
                         dres.Id_reservacion = id;
                     }
@@ -205,7 +205,7 @@ namespace Hotel
             int index = -1;
 
 
-            if(!(listaHabitaciones.Count == 0))
+            if(!(listaHabitaciones.Count == 0) || !(lista.Count == 0))
             {
 
                 if (!txtNumHab.Text.Equals("") )
@@ -218,13 +218,16 @@ namespace Hotel
 
                     if (i == -8)
                     {
+                        bool indi = false;
+                        int id_r = 0;
 
-
-                        foreach (Tbl_detalleReserv tbdr in listaHabitaciones)
+                        foreach (Vw_detalleReserv tbdr in listaHabitaciones)
                         {
-                            if(tbdr.Numero == Convert.ToString(txtNumHab.Text))
+                            if(tbdr.NumeroHab == Convert.ToString(txtNumHab.Text))
                             {
                                 encontrado = true;
+                                indi = tbdr.Indicador;
+                                id = tbdr.Id_detalleReserv;
                                 index = listaHabitaciones.IndexOf(tbdr);
                             }
                         }
@@ -233,6 +236,26 @@ namespace Hotel
                         {
                             listaHabitaciones.RemoveAt(index);
                             CargarTabla();
+                        }
+
+                        if(!indi)
+                        {
+                            if(ddr.EliminarDetalleReserv(id_r))
+                            {
+                                ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                                                   "Habitación eliminada de la reservación");
+                                ms.Run();
+                                ms.Destroy();
+
+                                CargarTabla();
+                            }
+                            else
+                            {
+                                ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
+                                                   "Error al eliminar");
+                                ms.Run();
+                                ms.Destroy();
+                            }
                         }
                     }
 

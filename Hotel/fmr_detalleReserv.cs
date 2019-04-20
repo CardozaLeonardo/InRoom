@@ -10,10 +10,14 @@ namespace Hotel
     public partial class fmr_detalleReserv : Gtk.Window
     {
         dtHabitaciones dth = new dtHabitaciones();
-        List<Tbl_detalleReserv> lista = null;
-        Tbl_detalleReserv tbr = new Tbl_detalleReserv();
+        List<Vw_detalleReserv> lista = null;
+        Vw_detalleReserv tbr = new Vw_detalleReserv();
         MessageDialog ms = null;
         fmr_Reservacion form = null;
+        dtDetalleReserv dtr = new dtDetalleReserv();
+        bool edicion = false;
+
+
         public fmr_detalleReserv() :
                 base(Gtk.WindowType.Toplevel)
         {
@@ -23,7 +27,19 @@ namespace Hotel
         }
 
 
-        public fmr_detalleReserv(List<Tbl_detalleReserv> list, fmr_Reservacion frm) :
+        public fmr_detalleReserv(Vw_detalleReserv vdr, fmr_Reservacion frm) :
+                base(Gtk.WindowType.Toplevel)
+        {
+            this.Build();
+            //LlenarTabla();
+            tbr = vdr;
+            edicion = true;
+            form = frm;
+
+        }
+
+
+        public fmr_detalleReserv(List<Vw_detalleReserv> list, fmr_Reservacion frm) :
                 base(Gtk.WindowType.Toplevel)
         {
             this.Build();
@@ -139,7 +155,7 @@ namespace Hotel
 
         protected void OnBtnVerificarClicked(object sender, EventArgs e)
         {
-            tbr = new Tbl_detalleReserv();
+            tbr = new Vw_detalleReserv();
 
             int hora_salida = Convert.ToInt32(salida_hora.Text);
             int minuto_salida = Convert.ToInt32(salida_minuto.Text);
@@ -193,10 +209,10 @@ namespace Hotel
                 minuto_e = entrada_minuto.Text;
             }
 
-            tbr.Fecha_entrada = txt_fechaEntrada.Text;
-            tbr.Fecha_salida = txt_fechaSalida.Text;
-            tbr.Hora_entrada = hora_e + ":" + minuto_e;
-            tbr.Hora_salida = hora_s + ":" + minuto_s;
+            tbr.FechaEntrada = txt_fechaEntrada.Text;
+            tbr.FechaSalida = txt_fechaSalida.Text;
+            tbr.HoraEntrada = hora_e + ":" + minuto_e;
+            tbr.HoraSalida = hora_s + ":" + minuto_s;
 
             //ListStore lista = dth.ListarHabitacionesDisponibles(tdr);
 
@@ -267,7 +283,7 @@ namespace Hotel
 
         protected void OnTwHabitacionesCursorChanged(object sender, EventArgs e)
         {
-            tbr = new Tbl_detalleReserv();
+            tbr = new Vw_detalleReserv();
             TreeSelection seleccion = (sender as TreeView).Selection;
             TreeIter iter;
             TreeModel model;
@@ -275,9 +291,9 @@ namespace Hotel
             if (seleccion.GetSelected(out model, out iter))
             {
                 tbr.Id_habitacion = Convert.ToInt32(model.GetValue(iter, 0).ToString());
-                tbr.Numero = model.GetValue(iter, 1).ToString();
-                tbr.TipoHabitacion = model.GetValue(iter, 2).ToString();
-                txtHab.Text = tbr.Numero;
+                tbr.NumeroHab = model.GetValue(iter, 1).ToString();
+                tbr.Descripcion = model.GetValue(iter, 2).ToString();
+                txtHab.Text = tbr.NumeroHab;
             }
         }
 
@@ -337,10 +353,12 @@ namespace Hotel
                     minuto_e = entrada_minuto.Text;
                 }
 
-                tbr.Fecha_entrada = txt_fechaEntrada.Text;
-                tbr.Fecha_salida = txt_fechaSalida.Text;
-                tbr.Hora_entrada = hora_e + ":" + minuto_e;
-                tbr.Hora_salida = hora_s + ":" + minuto_s;
+                tbr.FechaEntrada = txt_fechaEntrada.Text;
+                tbr.FechaSalida = txt_fechaSalida.Text;
+                tbr.HoraEntrada = hora_e + ":" + minuto_e;
+                tbr.HoraSalida = hora_s + ":" + minuto_s;
+
+                tbr.Indicador = true;
 
                 lista.Add(tbr);
                 form.CargarTabla();

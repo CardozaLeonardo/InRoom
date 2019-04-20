@@ -189,15 +189,15 @@ namespace Hotel.datos
             }
         }
 
-        public ListStore ListarHabitacionesDisponibles(Tbl_detalleReserv tdr)
+        public ListStore ListarHabitacionesDisponibles(Vw_detalleReserv tdr)
         {
             ListStore datos = new ListStore(typeof(string), typeof(string), typeof(string));
             IDataReader dr = null;
             sb.Clear();
             sb.Append("USE `hotel`;");
             sb.Append("SELECT h.id_habitacion, h.numero, h.descripcion FROM vw_habitaciones h LEFT JOIN "+
-"tbl_detalleReserv d ON h.id_habitacion = d.id_habitacion WHERE NOT(concat('" +tdr.Fecha_entrada + "', ' ', '"+ tdr.Hora_entrada+":00')"+
-"< concat(d.fecha_salida, ' ', d.hora_salida) AND concat('"+ tdr.Fecha_salida + "', ' ', '" + tdr.Hora_salida+ ":00') > concat(d.fecha_entrada, ' ', d.hora_entrada))"+
+"tbl_detalleReserv d ON h.id_habitacion = d.id_habitacion WHERE NOT(concat('" +tdr.FechaEntrada + "', ' ', '"+ tdr.HoraEntrada+":00')"+
+"< concat(d.fecha_salida, ' ', d.hora_salida) AND concat('"+ tdr.FechaSalida + "', ' ', '" + tdr.HoraSalida+ ":00') > concat(d.fecha_entrada, ' ', d.hora_entrada))"+
 "OR NOT(SELECT EXISTS(SELECT * FROM tbl_detalleReserv d INNER JOIN tbl_reservacion r ON d.id_reservacion =" +
 "r.id_reservacion WHERE r.estado <> 3 AND d.id_habitacion = h.id_habitacion));");
 

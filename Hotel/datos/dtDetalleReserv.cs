@@ -14,7 +14,7 @@ namespace Hotel.datos
         MessageDialog ms = null;
         StringBuilder sb = new StringBuilder();
 
-        public bool GuardarDetalleReserv(List<Tbl_detalleReserv> lista)
+        public bool GuardarDetalleReserv(List<Vw_detalleReserv> lista)
         {
             bool guardado = false;
             int x = 0;
@@ -22,11 +22,11 @@ namespace Hotel.datos
             sb.Clear();
             sb.Append("USE `hotel`;");
 
-            foreach(Tbl_detalleReserv tdr in lista)
+            foreach(Vw_detalleReserv tdr in lista)
             {
                 sb.Append("INSERT INTO tbl_detalleReserv (id_reservacion, id_habitacion, fecha_entrada" +
                 ", fecha_salida, hora_entrada, hora_salida) VALUES(" + tdr.Id_reservacion + "," + tdr.Id_habitacion + ",'"
-                + tdr.Fecha_entrada + "','" + tdr.Fecha_salida + "','" + tdr.Hora_entrada + "','" + tdr.Hora_salida + "');");
+                + tdr.FechaEntrada + "','" + tdr.FechaSalida + "','" + tdr.HoraEntrada + "','" + tdr.HoraSalida + "');");
             }
 
 
@@ -57,19 +57,14 @@ namespace Hotel.datos
 
         }
 
-        public bool EliminarDetalleReserv(List<Tbl_detalleReserv> lista)
+        public bool EliminarDetalleReserv(int id)
         {
             bool eliminado = false;
             int x = 0;
 
             sb.Clear();
             sb.Append("USE `hotel`;");
-
-
-            foreach(Tbl_detalleReserv tdr in lista)
-            {
-                sb.Append("DELETE FROM tbl_detalleReserv WHERE id_detalleReserv = " + tdr.Id_detalleReserv + ";");
-            }
+            sb.Append("DELETE FROM tbl_detalleReserv WHERE id_detalleReserv = " + id + ";");
 
             try
             {

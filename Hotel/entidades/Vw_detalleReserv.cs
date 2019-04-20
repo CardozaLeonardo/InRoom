@@ -12,6 +12,7 @@ namespace Hotel.entidades
         private String fechaSalida;
         private String horaEntrada;
         private String horaSalida;
+        private bool indicador = false;
 
         public Vw_detalleReserv()
         {
@@ -26,5 +27,6 @@ namespace Hotel.entidades
         public string FechaSalida { get => fechaSalida; set => fechaSalida = value; }
         public string HoraEntrada { get => horaEntrada; set => horaEntrada = value; }
         public string HoraSalida { get => horaSalida; set => horaSalida = value; }
+        public bool Indicador { get => indicador; set => indicador = value; }
     }
 }

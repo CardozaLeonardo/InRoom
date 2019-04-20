@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{80F444DB-744C-4EF0-89F6-00A5E0A078D2}|Default">
   <MonoDevelop.Ide.ItemProperties.Hotel PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Hotel/fmr_Reservacion.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Hotel/entidades/Vw_detalleReserv.cs">
     <Files>
       <File FileName="../Seguridad/Seguridad/frmUsuario.cs" Line="1" Column="1" />
       <File FileName="Hotel/datos/dtUsuario.cs" Line="11" Column="18" />
@@ -8,17 +8,22 @@
       <File FileName="Hotel/frm_huespedReserv.cs" Line="72" Column="29" />
       <File FileName="Hotel/frm_reservaciones.cs" Line="66" Column="1" />
       <File FileName="Hotel/datos/dtHabitaciones.cs" Line="1" Column="1" />
-      <File FileName="Hotel/gtk-gui/MainWindow.cs" Line="138" Column="26" />
-      <File FileName="Hotel/datos/dtDetalleReserv.cs" Line="65" Column="24" />
-      <File FileName="Hotel/datos/dtReservacion.cs" Line="15" Column="39" />
-      <File FileName="Hotel/fmr_Reservacion.cs" Line="176" Column="42" />
+      <File FileName="Hotel/gtk-gui/MainWindow.cs" Line="138" Column="102" />
+      <File FileName="Hotel/datos/dtDetalleReserv.cs" Line="13" Column="13" />
+      <File FileName="Hotel/datos/dtReservacion.cs" Line="12" Column="18" />
+      <File FileName="Hotel/fmr_Reservacion.cs" Line="172" Column="9" />
+      <File FileName="Hotel/fmr_detalleReserv.cs" Line="344" Column="17" />
+      <File FileName="Hotel/entidades/Vw_detalleReserv.cs" Line="15" Column="39" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Hotel" expanded="True">
             <Node name="Hotel" expanded="True">
-              <Node name="fmr_Reservacion.cs" selected="True" />
+              <Node name="datos" expanded="True" />
+              <Node name="entidades" expanded="True">
+                <Node name="Vw_detalleReserv.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

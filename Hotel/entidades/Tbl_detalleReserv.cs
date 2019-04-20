@@ -12,6 +12,8 @@ namespace Hotel.entidades
         private String hora_salida;
         private String tipoHabitacion;
         private String numero;
+        private bool indicator = false; // Indica si un registro en la lista de reservacion está siendo procesado
+        // o si ya fue almacenado.
 
 
         public Tbl_detalleReserv()
@@ -27,5 +29,6 @@ namespace Hotel.entidades
         public string Hora_salida { get => hora_salida; set => hora_salida = value; }
         public string TipoHabitacion { get => tipoHabitacion; set => tipoHabitacion = value; }
         public string Numero { get => numero; set => numero = value; }
+        public bool Indicator { get => indicator; set => indicator = value; }
     }
 }
