@@ -20,6 +20,7 @@ namespace Hotel
         Tbl_huesped tbh = new Tbl_huesped();
         MessageDialog ms = null;
 
+
         public fmr_Reservacion() :
                 base(Gtk.WindowType.Toplevel)
         {
@@ -204,43 +205,52 @@ namespace Hotel
             int index = -1;
 
 
-            ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo, 
-                "¿Desea eliminar esta habitación?");
-
-            int i = ms.Run();
-            ms.Destroy();
-
-
-
-            if(i == -8)
+            if(!(listaHabitaciones.Count == 0))
             {
 
                 if (!txtNumHab.Text.Equals("") )
                 {
-                    if(!(listaHabitaciones.Count == 0))
-                    {
-                        ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok,
-                                                   "No hay habitaciones");
-                        ms.Run();
-                        ms.Destroy();
-                        return;
-                    }
+                    ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo,
+                "¿Desea eliminar esta habitación?");
 
-                    foreach (Tbl_detalleReserv tbdr in listaHabitaciones)
+                    int i = ms.Run();
+                    ms.Destroy();
+
+                    if (i == -8)
                     {
-                        if(tbdr.Numero == Convert.ToString(txtNumHab.Text))
+
+
+                        foreach (Tbl_detalleReserv tbdr in listaHabitaciones)
                         {
-                            encontrado = true;
-                            index = listaHabitaciones.IndexOf(tbdr);
+                            if(tbdr.Numero == Convert.ToString(txtNumHab.Text))
+                            {
+                                encontrado = true;
+                                index = listaHabitaciones.IndexOf(tbdr);
+                            }
+                        }
+
+                        if(encontrado)
+                        {
+                            listaHabitaciones.RemoveAt(index);
+                            CargarTabla();
                         }
                     }
 
-                    if(encontrado)
-                    {
-                        listaHabitaciones.RemoveAt(index);
-                        CargarTabla();
-                    }
                 }
+                else
+                {
+                    ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok,
+                                                   "Tiene que seleccionar una habitación");
+                    ms.Run();
+                    ms.Destroy();
+                }
+            }
+            else
+            {
+                ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok,
+                                                   "No hay habitaciones agregadas");
+                ms.Run();
+                ms.Destroy();
             }
 
         }

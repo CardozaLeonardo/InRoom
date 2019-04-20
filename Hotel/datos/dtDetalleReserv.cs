@@ -57,14 +57,19 @@ namespace Hotel.datos
 
         }
 
-        public bool EliminarDetalleReserv(int id_dt)
+        public bool EliminarDetalleReserv(List<Tbl_detalleReserv> lista)
         {
             bool eliminado = false;
             int x = 0;
 
             sb.Clear();
             sb.Append("USE `hotel`;");
-            sb.Append("DELETE FROM tbl_detalleReserv WHERE id_detalleReserv = " + id_dt + ";");
+
+
+            foreach(Tbl_detalleReserv tdr in lista)
+            {
+                sb.Append("DELETE FROM tbl_detalleReserv WHERE id_detalleReserv = " + tdr.Id_detalleReserv + ";");
+            }
 
             try
             {
