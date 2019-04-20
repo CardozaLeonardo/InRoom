@@ -145,6 +145,20 @@
     <Compile Include="datos\dtHuesped.cs" />
     <Compile Include="entidades\Vw_reservaciones.cs" />
     <Compile Include="entidades\Vw_detalleReserv.cs" />
+    <Compile Include="datos\dtProducto.cs" />
+    <Compile Include="datos\dtTipoProducto.cs" />
+    <Compile Include="datos\dtDetalleMov.cs" />
+    <Compile Include="datos\dtFactura.cs" />
+    <Compile Include="negocio\ngProducto.cs" />
+    <Compile Include="negocio\ngFactura.cs" />
+    <Compile Include="fmr_producto.cs" />
+    <Compile Include="gtk-gui\Hotel.fmr_producto.cs" />
+    <Compile Include="fmr_calendario.cs" />
+    <Compile Include="gtk-gui\Hotel.fmr_calendario.cs" />
+    <Compile Include="fmr_factura.cs" />
+    <Compile Include="gtk-gui\Hotel.fmr_factura.cs" />
+    <Compile Include="fmr_abastecer.cs" />
+    <Compile Include="gtk-gui\Hotel.fmr_abastecer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="entidades\" />
