@@ -1393,4 +1393,52 @@
       <placeholder />
     </child>
   </widget>
+  <widget class="Gtk.Window" id="Hotel.frmRoles" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">frmRoles</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <placeholder />
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="Hotel.frmOpciones" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">frmOpciones</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <placeholder />
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="Hotel.frmOpcionRol" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">frmOpcionRol</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <placeholder />
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="Hotel.frmUserRol" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">frmUserRol</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <placeholder />
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="Hotel.frmHabitaciones" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">frmHabitaciones</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <placeholder />
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="Hotel.frmTipoHabitaciones" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">frmTipoHabitaciones</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <placeholder />
+    </child>
+  </widget>
 </stetic-interface>

@@ -159,6 +159,26 @@
     <Compile Include="gtk-gui\Hotel.fmr_factura.cs" />
     <Compile Include="fmr_abastecer.cs" />
     <Compile Include="gtk-gui\Hotel.fmr_abastecer.cs" />
+    <Compile Include="negocio\ngHabitaciones.cs" />
+    <Compile Include="negocio\ngOpcion.cs" />
+    <Compile Include="negocio\ngOpcionRol.cs" />
+    <Compile Include="negocio\ngRol.cs" />
+    <Compile Include="negocio\ngTipoHabitacion.cs" />
+    <Compile Include="datos\dtOpcion.cs" />
+    <Compile Include="datos\dtOpcionRol.cs" />
+    <Compile Include="datos\dtRol.cs" />
+    <Compile Include="frmRoles.cs" />
+    <Compile Include="gtk-gui\Hotel.frmRoles.cs" />
+    <Compile Include="frmOpciones.cs" />
+    <Compile Include="gtk-gui\Hotel.frmOpciones.cs" />
+    <Compile Include="frmOpcionRol.cs" />
+    <Compile Include="gtk-gui\Hotel.frmOpcionRol.cs" />
+    <Compile Include="frmUserRol.cs" />
+    <Compile Include="gtk-gui\Hotel.frmUserRol.cs" />
+    <Compile Include="frmHabitaciones.cs" />
+    <Compile Include="gtk-gui\Hotel.frmHabitaciones.cs" />
+    <Compile Include="frmTipoHabitaciones.cs" />
+    <Compile Include="gtk-gui\Hotel.frmTipoHabitaciones.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="entidades\" />
