@@ -12,6 +12,7 @@ namespace Hotel
         dtReservacion dtr = new dtReservacion();
         MessageDialog ms = null;
         Tbl_reservacion tbr = new Tbl_reservacion();
+        bool columnas = false;
         public frm_reservaciones() :
                 base(Gtk.WindowType.Toplevel)
         {
@@ -23,10 +24,16 @@ namespace Hotel
         {
             twReservaciones.Model = dtr.ListarReservaciones();
 
-            string[] titulos = { "ID", "Número", "Registrado", "Nombres", "Apellidos", "Cédula" , "Habitaciones"};
-            for (int i = 0; i < titulos.Length; i++)
+            if (!columnas)
             {
-                twReservaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+
+                string[] titulos = { "ID", "Número", "Registrado", "Nombres", "Apellidos", "Cédula" , "Habitaciones"};
+                for (int i = 0; i < titulos.Length; i++)
+                {
+                    twReservaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+                }
+
+                columnas = true;
             }
         }
 
@@ -57,10 +64,14 @@ namespace Hotel
 
                 twReservaciones.Model = dtr.BuscarReservacion(txtBuscar.Text.Trim());
                 
-                string[] titulos = { "ID", "Número", "Registrado", "Nombres", "Apellidos", "Cédula", "Habitaciones" };
-                for (int i = 0; i < titulos.Length; i++)
+                if(!columnas)
                 {
-                    twReservaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+                    string[] titulos = { "ID", "Número", "Registrado", "Nombres", "Apellidos", "Cédula", "Habitaciones" };
+                    for (int i = 0; i < titulos.Length; i++)
+                    {
+                        twReservaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+                    }
+                    columnas = true;
                 }
             }
 
@@ -73,6 +84,44 @@ namespace Hotel
 
             fmr_Reservacion frm = new fmr_Reservacion(id);
             frm.Show();
+        }
+
+        protected void OnBtnFinalizarClicked(object sender, EventArgs e)
+        {
+
+
+            if(!txtNum.Text.Equals(""))
+            {
+
+                ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Question, ButtonsType.YesNo,
+                "¿Desea finalizar esta reservación?");
+                int valor;
+                valor = ms.Run();
+                ms.Destroy();
+
+                if (valor == -8)
+                {
+                    if(dtr.FinalizarReservacion(tbr))
+                    {
+                        ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "¡Reservación finalizada!");
+                        ms.Run();
+                        ms.Destroy();
+
+                        LlenarTabla();
+                    }
+                    else
+                    {
+                        ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
+                    "Ha ocurrido un error");
+                        ms.Run();
+                        ms.Destroy();
+                    }
+
+                } 
+            } //
+
+
         }
     }
 

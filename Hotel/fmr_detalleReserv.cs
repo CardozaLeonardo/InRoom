@@ -10,12 +10,14 @@ namespace Hotel
     public partial class fmr_detalleReserv : Gtk.Window
     {
         dtHabitaciones dth = new dtHabitaciones();
+        ngHabitaciones ngh = new ngHabitaciones();
         List<Vw_detalleReserv> lista = null;
         Vw_detalleReserv tbr = new Vw_detalleReserv();
         MessageDialog ms = null;
         fmr_Reservacion form = null;
         dtDetalleReserv dtr = new dtDetalleReserv();
         bool edicion = false;
+        bool columnas = false;
 
 
         public fmr_detalleReserv() :
@@ -136,21 +138,35 @@ namespace Hotel
         public void LlenarTabla()
         {
             twHabitaciones.Model = dth.ListarHabitaciones();
-            string[] titulos = { "ID", "Numero", "Tipo" };
-            for (int i = 0; i < titulos.Length; i++)
+            if (!columnas)
             {
-                twHabitaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+
+                string[] titulos = { "ID", "Numero", "Tipo" };
+                for (int i = 0; i < titulos.Length; i++)
+                {
+                    twHabitaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+                }
+
+                columnas = true;
             }
         }
 
         public void LlenarTabla(ListStore lista)
         {
+
             twHabitaciones.Model = lista;
-            string[] titulos = { "ID", "Numero", "Tipo" };
-            for (int i = 0; i < titulos.Length; i++)
+            if (!columnas)
             {
-                twHabitaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+
+                string[] titulos = { "ID", "Numero", "Tipo" };
+                for (int i = 0; i < titulos.Length; i++)
+                {
+                    twHabitaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+                }
+
+                columnas = true;
             }
+
         }
 
         protected void OnBtnVerificarClicked(object sender, EventArgs e)
@@ -220,10 +236,17 @@ namespace Hotel
 
 
             twHabitaciones.Model = dth.ListarHabitacionesDisponibles(tbr);
-            string[] titulos = { "ID", "Numero", "Tipo" };
-            for (int i = 0; i < titulos.Length; i++)
+
+            if (!columnas)
             {
-                twHabitaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+
+                string[] titulos = { "ID", "Numero", "Tipo" };
+                for (int i = 0; i < titulos.Length; i++)
+                {
+                    twHabitaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+                }
+
+                columnas = true;
             }
         }
 
@@ -359,6 +382,11 @@ namespace Hotel
                 tbr.HoraSalida = hora_s + ":" + minuto_s;
 
                 tbr.Indicador = true;
+
+                if(!ngh.ComprobarDisponibilidadHab(tbr))
+                {
+                    return;
+                }
 
                 lista.Add(tbr);
                 form.CargarTabla();

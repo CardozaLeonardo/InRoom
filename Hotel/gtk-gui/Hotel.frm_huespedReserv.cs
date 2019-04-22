@@ -180,6 +180,7 @@ namespace Hotel
 			this.DefaultHeight = 504;
 			this.Show();
 			this.twHuesped.CursorChanged += new global::System.EventHandler(this.OnTwHuespedCursorChanged);
+			this.btnCancelar.Clicked += new global::System.EventHandler(this.OnBtnCancelarClicked);
 			this.btnAgregar.Clicked += new global::System.EventHandler(this.OnBtnAgregarClicked);
 			this.btnBuscar.Clicked += new global::System.EventHandler(this.OnBtnBuscarClicked);
 		}

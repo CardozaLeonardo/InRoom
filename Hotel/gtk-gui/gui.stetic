@@ -1099,6 +1099,7 @@
             <property name="Type">TextOnly</property>
             <property name="Label" translatable="yes">Finalizar</property>
             <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnFinalizarClicked" />
           </widget>
           <packing>
             <property name="X">607</property>
@@ -1307,6 +1308,7 @@
             <property name="Type">TextOnly</property>
             <property name="Label" translatable="yes">Cancelar</property>
             <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnCancelarClicked" />
           </widget>
           <packing>
             <property name="X">468</property>

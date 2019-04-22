@@ -13,6 +13,7 @@ namespace Hotel
         MessageDialog ms = null;
         Tbl_huesped tbh = null;
         fmr_Reservacion form = null;
+        bool columnas = false;
 
         public frm_huespedReserv() :
                 base(Gtk.WindowType.Toplevel)
@@ -41,10 +42,16 @@ namespace Hotel
         {
             twHuesped.Model = dth.BuscarHuesped(busqueda);
 
-            string[] titulos = { "ID", "Cédula",  "Nombres", "Apellidos", "Telefono", "Email" };
-            for (int i = 0; i < titulos.Length; i++)
+            if (!columnas)
             {
-                twHuesped.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+
+                string[] titulos = { "ID", "Cédula",  "Nombres", "Apellidos", "Telefono", "Email" };
+                for (int i = 0; i < titulos.Length; i++)
+                {
+                    twHuesped.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+                }
+
+                columnas = true;
             }
         }
 
@@ -89,6 +96,11 @@ namespace Hotel
                 //this.txtapellidos.Text = model.GetValue(iter, 3).ToString();
                 //this.txtemail.Text = model.GetValue(iter, 4).ToString();
             }
+        }
+
+        protected void OnBtnCancelarClicked(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

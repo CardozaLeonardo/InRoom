@@ -248,6 +248,7 @@ namespace Hotel
 			this.Show();
 			this.twReservaciones.CursorChanged += new global::System.EventHandler(this.OnTwReservacionesCursorChanged);
 			this.btnBuscar.Clicked += new global::System.EventHandler(this.OnBtnBuscarClicked);
+			this.btnFinalizar.Clicked += new global::System.EventHandler(this.OnBtnFinalizarClicked);
 			this.btnModificar.Clicked += new global::System.EventHandler(this.OnBtnModificarClicked);
 		}
 	}

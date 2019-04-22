@@ -168,7 +168,7 @@ namespace Hotel.datos
             }
         }
 
-        public bool EliminarReservacion(Tbl_reservacion tbr)
+        public bool FinalizarReservacion(Tbl_reservacion tbr)
         {
             bool eliminado = true;
             int x = 0;

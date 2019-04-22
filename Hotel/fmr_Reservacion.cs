@@ -20,6 +20,7 @@ namespace Hotel
         Tbl_huesped tbh = new Tbl_huesped();
         MessageDialog ms = null;
         List<Vw_detalleReserv> lista = null;
+        bool columnas = false;
 
         public fmr_Reservacion() :
                 base(Gtk.WindowType.Toplevel)
@@ -89,11 +90,18 @@ namespace Hotel
 
             twHabitaciones.Model = datos;
 
-            string[] titulos = { "ID", "Numero", "Tipo", "Entrada", "Salida" };
-            for (int i = 0; i < titulos.Length; i++)
+            if(!columnas)
             {
-                twHabitaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+
+                string[] titulos = { "ID", "Numero", "Tipo", "Entrada", "Salida" };
+                for (int i = 0; i < titulos.Length; i++)
+                {
+                    twHabitaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+                }
+
+                columnas = true;
             }
+
         }
 
         public void CargarTabla(int id_reservacion)
@@ -117,11 +125,18 @@ namespace Hotel
 
             twHabitaciones.Model = datos;
 
-            string[] titulos = { "ID", "Numero", "Tipo", "Entrada", "Salida" };
-            for (int i = 0; i < titulos.Length; i++)
+            if (!columnas)
             {
-                twHabitaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+
+                string[] titulos = { "ID", "Numero", "Tipo", "Entrada", "Salida" };
+                for (int i = 0; i < titulos.Length; i++)
+                {
+                    twHabitaciones.AppendColumn(titulos[i], new CellRendererText(), "text", i);
+                }
+
+                columnas = true;
             }
+
         }
 
         protected void OnBtnGuardarClicked(object sender, EventArgs e)

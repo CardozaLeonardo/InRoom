@@ -230,6 +230,58 @@ namespace Hotel.datos
             //return datos;
         }
 
+        public bool VerificarHabDisponible(Vw_detalleReserv tdr)
+        {
+            bool encontrado = false;
+            IDataReader idr = null;
+            sb.Clear();
+            sb.Append("USE `hotel`;");
+            sb.Append("SELECT h.id_habitacion, h.numero, h.descripcion FROM vw_habitaciones h LEFT JOIN " +
+ "tbl_detalleReserv d ON h.id_habitacion = d.id_habitacion WHERE NOT(concat('" + tdr.FechaEntrada + "', ' ', '" + tdr.HoraEntrada + ":00')" +
+ "< concat(d.fecha_salida, ' ', d.hora_salida) AND concat('" + tdr.FechaSalida + "', ' ', '" + tdr.HoraSalida + ":00') > concat(d.fecha_entrada, ' ', d.hora_entrada))" +
+ "OR NOT(SELECT EXISTS(SELECT * FROM tbl_detalleReserv d INNER JOIN tbl_reservacion r ON d.id_reservacion =" +
+ "r.id_reservacion WHERE r.estado <> 3 AND d.id_habitacion = h.id_habitacion));");
+
+            try
+            {
+                con.AbrirConexion();
+                idr = con.Leer(CommandType.Text, sb.ToString());
+
+                // EXPLICACIÓN: esta parte compara los números de habitaciones disponibles según las
+                // fechas y horas de entrada y salida que fueron otorgadas. Si se encuentra la habitación
+                // seleccionada quiere decir que es posible utilizarla.
+
+                while(idr.Read())
+                {
+                    if(tdr.NumeroHab.Equals(idr[1].ToString()))
+                    {
+                        encontrado = true;
+                    }
+                }
+
+                return encontrado;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+                idr.Close();
+                return encontrado;
+                throw;
+
+            }
+            finally
+            {
+                con.CerrarConexion();
+
+            }
+
+
+        
+
+
+        }
+
         //fin del metodo
         #endregion
 
