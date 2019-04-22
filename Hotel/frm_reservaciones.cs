@@ -18,6 +18,7 @@ namespace Hotel
         {
             this.Build();
             LlenarTabla();
+            txtBuscar.GrabFocus();
         }
 
         public void LlenarTabla()
@@ -122,6 +123,11 @@ namespace Hotel
             } //
 
 
+        }
+
+        protected void OnBtnSalirClicked(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 

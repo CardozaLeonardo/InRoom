@@ -396,6 +396,13 @@ namespace Hotel
                 ms.Destroy();
                 this.Hide();
             }
+            else
+            {
+                ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok,
+                "¡Agregue una habitación!");
+                ms.Run();
+                ms.Destroy();
+            }
         }
     }
 }

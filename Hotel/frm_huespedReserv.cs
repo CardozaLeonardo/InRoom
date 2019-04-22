@@ -27,6 +27,8 @@ namespace Hotel
             this.Build();
             tbh = huesped;
             form = fmr;
+
+            txtBuscar.GrabFocus();
         }
 
         protected void OnBtnBuscarClicked(object sender, EventArgs e)

@@ -19,7 +19,8 @@ namespace Hotel.negocio
             else
             {
                 ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok,
-                    "La habitación " + vdr.NumeroHab + " estará ocupada en ese momento");
+                    "La habitación " + vdr.NumeroHab + " estará ocupada en ese momento \n" +
+                    "Presione \"Verificar\" antes de agregar habitación");
                 ms.Run();
                 ms.Destroy();
 

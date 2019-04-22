@@ -34,6 +34,11 @@ namespace Hotel.datos
                     guardado = true;
                 }
 
+                ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                    "La reservación se guardó con el número " + tbr.Num_reserv);
+                ms.Run();
+                ms.Destroy();
+
                 return guardado;
             }
             catch (Exception e)
