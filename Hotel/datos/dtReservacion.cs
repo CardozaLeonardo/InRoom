@@ -215,9 +215,10 @@ namespace Hotel.datos
 
             sb.Clear();
             sb.Append("USE `hotel`;");
-            sb.Append("UPDATE tbl_reservacion SET num_reserv = " + tbr.Num_reserv + ", id_huesped = " + tbr.Id_huesped
-            + ", fecha = '" + tbr.Fecha + "', estado = 2 WHERE id_reservacion = " + tbr.Id_reservacion + ";");
+            //sb.Append("UPDATE tbl_reservacion SET num_reserv = " + tbr.Num_reserv + ", id_huesped = " + tbr.Id_huesped
+            //+ ", fecha = '" + tbr.Fecha + "', estado = 2 WHERE id_reservacion = " + tbr.Id_reservacion + ";");
 
+            sb.Append("UPDATE tbl_reservacion SET id_huesped = " + tbr.Id_huesped + " WHERE id_reservacion = "+ tbr.Id_reservacion +";");
             try
             {
                 con.AbrirConexion();

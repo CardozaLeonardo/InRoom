@@ -1,29 +1,28 @@
 ﻿<Properties StartupConfiguration="{80F444DB-744C-4EF0-89F6-00A5E0A078D2}|Default">
   <MonoDevelop.Ide.ItemProperties.Hotel PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Hotel/datos/dtReservacion.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Hotel/frm_reservaciones.cs">
     <Files>
-      <File FileName="Hotel/datos/dtDetalleReserv.cs" Line="1" Column="1" />
-      <File FileName="Hotel/fmr_Reservacion.cs" Line="239" Column="48" />
-      <File FileName="Hotel/fmr_detalleReserv.cs" Line="403" Column="26" />
+      <File FileName="Hotel/datos/dtDetalleReserv.cs" Line="29" Column="21" />
+      <File FileName="Hotel/fmr_Reservacion.cs" Line="203" Column="62" />
+      <File FileName="Hotel/fmr_detalleReserv.cs" Line="409" Column="1" />
       <File FileName="Hotel/entidades/Vw_detalleReserv.cs" Line="10" Column="36" />
       <File FileName="Hotel/negocio/ngRol.cs" Line="1" Column="1" />
-      <File FileName="Hotel/frm_huespedReserv.cs" Line="29" Column="24" />
-      <File FileName="Hotel/frm_reservaciones.cs" Line="130" Column="25" />
-      <File FileName="Hotel/negocio/ngHabitaciones.cs" Line="26" Column="17" />
-      <File FileName="Hotel/datos/dtHabitaciones.cs" Line="214" Column="14" />
       <File FileName="Hotel/datos/dtUsuario.cs" Line="254" Column="14" />
-      <File FileName="Hotel/datos/dtReservacion.cs" Line="176" Column="24" />
+      <File FileName="Hotel/datos/dtReservacion.cs" Line="222" Column="8" />
+      <File FileName="Hotel/MainWindow.cs" Line="10" Column="6" />
+      <File FileName="Hotel/Program.cs" Line="17" Column="33" />
+      <File FileName="Hotel/negocio/ngReservacion.cs" Line="17" Column="14" />
+      <File FileName="Hotel/negocio/ngHabitaciones.cs" Line="26" Column="30" />
+      <File FileName="Hotel/datos/dtHuesped.cs" Line="104" Column="30" />
+      <File FileName="Hotel/frm_reservaciones.cs" Line="130" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Hotel" expanded="True">
             <Node name="Hotel" expanded="True">
-              <Node name="datos" expanded="True">
-                <Node name="dtReservacion.cs" selected="True" />
-              </Node>
-              <Node name="negocio" expanded="True" />
-              <Node name="Properties" expanded="True" />
+              <Node name="datos" expanded="True" />
+              <Node name="frm_reservaciones.cs" selected="True" />
             </Node>
           </Node>
         </State>

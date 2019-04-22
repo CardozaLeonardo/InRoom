@@ -44,13 +44,16 @@ namespace Hotel
 
 		private global::Gtk.Label label10;
 
+		private global::Gtk.Button btnSalir;
+
 		protected virtual void Build()
 		{
 			global::Stetic.Gui.Initialize(this);
 			// Widget Hotel.frm_reservaciones
 			this.Name = "Hotel.frm_reservaciones";
 			this.Title = global::Mono.Unix.Catalog.GetString("frm_reservaciones");
-			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+			this.WindowPosition = ((global::Gtk.WindowPosition)(1));
+			this.Gravity = ((global::Gdk.Gravity)(5));
 			// Container child Hotel.frm_reservaciones.Gtk.Container+ContainerChild
 			this.fixed1 = new global::Gtk.Fixed();
 			this.fixed1.WidthRequest = 300;
@@ -238,6 +241,18 @@ namespace Hotel
 			global::Gtk.Fixed.FixedChild w19 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.label10]));
 			w19.X = 419;
 			w19.Y = 75;
+			// Container child fixed1.Gtk.Fixed+FixedChild
+			this.btnSalir = new global::Gtk.Button();
+			this.btnSalir.WidthRequest = 120;
+			this.btnSalir.HeightRequest = 30;
+			this.btnSalir.CanFocus = true;
+			this.btnSalir.Name = "btnSalir";
+			this.btnSalir.UseUnderline = true;
+			this.btnSalir.Label = global::Mono.Unix.Catalog.GetString("Salir");
+			this.fixed1.Add(this.btnSalir);
+			global::Gtk.Fixed.FixedChild w20 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.btnSalir]));
+			w20.X = 602;
+			w20.Y = 262;
 			this.Add(this.fixed1);
 			if ((this.Child != null))
 			{
@@ -250,6 +265,7 @@ namespace Hotel
 			this.btnBuscar.Clicked += new global::System.EventHandler(this.OnBtnBuscarClicked);
 			this.btnFinalizar.Clicked += new global::System.EventHandler(this.OnBtnFinalizarClicked);
 			this.btnModificar.Clicked += new global::System.EventHandler(this.OnBtnModificarClicked);
+			this.btnSalir.Clicked += new global::System.EventHandler(this.OnBtnSalirClicked);
 		}
 	}
 }

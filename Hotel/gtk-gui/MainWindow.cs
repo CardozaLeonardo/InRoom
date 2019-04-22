@@ -107,6 +107,7 @@ public partial class MainWindow
 		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString("InRoom - Inicio");
+		this.Icon = new global::Gdk.Pixbuf(global::System.IO.Path.Combine(global::System.AppDomain.CurrentDomain.BaseDirectory, "./logo_In_Room.png"));
 		this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 		this.DefaultWidth = 1000;
 		this.DefaultHeight = 600;

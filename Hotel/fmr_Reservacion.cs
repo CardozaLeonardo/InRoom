@@ -13,6 +13,7 @@ namespace Hotel
         List<Vw_detalleReserv> listaHabitaciones = new List<Vw_detalleReserv>();
         dtDetalleReserv ddr = new dtDetalleReserv();
         dtReservacion dtr = new dtReservacion();
+        dtHuesped dth = new dtHuesped();
         Tbl_reservacion tbr = new Tbl_reservacion();
         Vw_reservaciones vr = null;
         int id = 0;
@@ -21,6 +22,7 @@ namespace Hotel
         MessageDialog ms = null;
         List<Vw_detalleReserv> lista = null;
         bool columnas = false;
+        ngHabitaciones ngh = new ngHabitaciones();
 
         public fmr_Reservacion() :
                 base(Gtk.WindowType.Toplevel)
@@ -46,8 +48,7 @@ namespace Hotel
             txtNombres.Text = vr.Nombres;
             txtApellidos.Text = vr.Apellidos;
             txtCedula.Text = vr.Cedula;
-
-
+            tbr.Id_reservacion = id_reservacion;
 
             //this.txtNum.Text = Convert.ToString(dtr.GetNumReserv() + 1);
             //txtFecha.Text = ObtenerFecha();
@@ -142,40 +143,92 @@ namespace Hotel
         protected void OnBtnGuardarClicked(object sender, EventArgs e)
         {
             tbr.Num_reserv = Convert.ToInt32(this.txtNum.Text);
-            tbr.Id_huesped = tbh.Id_huesped;
+            
+
 
 
             tbr.Fecha = ObtenerFecha();
 
             if(!txtCedula.Text.Equals(""))
             {
-
-                if (dtr.GuardarReservacion(tbr))
+                if(!ngh.ComprobarDisponibilidadHab(listaHabitaciones))
                 {
-                    
-                    id = dtr.GetIdReserv(tbr.Num_reserv);
-                    
-                    foreach(Vw_detalleReserv dres in listaHabitaciones)
+                    return;
+                }
+
+               
+
+                if (edicion)
+                {
+                    tbh.Id_huesped = dth.GetIdHuesped(txtCedula.Text);
+                    tbr.Id_huesped = tbh.Id_huesped;
+
+                    if (dtr.ActualizarReservacion(tbr))
                     {
-                        dres.Id_reservacion = id;
+
+                        id = dtr.GetIdReserv(tbr.Num_reserv);
+
+                        foreach (Vw_detalleReserv dres in listaHabitaciones)
+                        {
+                            if (dres.Indicador)
+                            {
+
+                                dres.Id_reservacion = id;
+                            }
+                        }
+
+                        if (ddr.GuardarDetalleReserv(listaHabitaciones))
+                        {
+                            ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                                                   "¡Reservación guardada!");
+                            ms.Run();
+                            ms.Destroy();
+                            this.Hide();
+                        }
                     }
-                    
-                    if (ddr.GuardarDetalleReserv(listaHabitaciones))
+                    else
                     {
-                        ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
-                                               "¡Reservación guardada!");
+                        ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
+                                               "¡Error al guardar!");
                         ms.Run();
                         ms.Destroy();
-                        this.Hide();
                     }
                 }
                 else
                 {
-                    ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
-                                           "¡Error al guardar!");
-                    ms.Run();
-                    ms.Destroy();
-                }
+                    tbr.Id_huesped = tbh.Id_huesped;
+                    if (dtr.GuardarReservacion(tbr))
+                    {
+
+                        id = dtr.GetIdReserv(tbr.Num_reserv);
+
+                        foreach(Vw_detalleReserv dres in listaHabitaciones)
+                        {
+                            if(dres.Indicador)
+                            {
+
+                                dres.Id_reservacion = id;
+                            }
+                        }
+
+                        if (ddr.GuardarDetalleReserv(listaHabitaciones))
+                        {
+                            ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Info, ButtonsType.Ok,
+                                                   "¡Reservación guardada!");
+                            ms.Run();
+                            ms.Destroy();
+                            this.Hide();
+                        }
+                    }
+                    else
+                    {
+                        ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok,
+                                               "¡Error al guardar!");
+                        ms.Run();
+                        ms.Destroy();
+                    }
+                } //
+
             }else
             {
                 ms = new MessageDialog(null, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok,
@@ -242,7 +295,7 @@ namespace Hotel
                             {
                                 encontrado = true;
                                 indi = tbdr.Indicador;
-                                id = tbdr.Id_detalleReserv;
+                                id_r = tbdr.Id_detalleReserv;
                                 index = listaHabitaciones.IndexOf(tbdr);
                             }
                         }

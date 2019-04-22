@@ -24,9 +24,13 @@ namespace Hotel.datos
 
             foreach(Vw_detalleReserv tdr in lista)
             {
-                sb.Append("INSERT INTO tbl_detalleReserv (id_reservacion, id_habitacion, fecha_entrada" +
-                ", fecha_salida, hora_entrada, hora_salida) VALUES(" + tdr.Id_reservacion + "," + tdr.Id_habitacion + ",'"
-                + tdr.FechaEntrada + "','" + tdr.FechaSalida + "','" + tdr.HoraEntrada + "','" + tdr.HoraSalida + "');");
+                if(tdr.Indicador)
+                {
+
+                    sb.Append("INSERT INTO tbl_detalleReserv (id_reservacion, id_habitacion, fecha_entrada" +
+                    ", fecha_salida, hora_entrada, hora_salida) VALUES(" + tdr.Id_reservacion + "," + tdr.Id_habitacion + ",'"
+                    + tdr.FechaEntrada + "','" + tdr.FechaSalida + "','" + tdr.HoraEntrada + "','" + tdr.HoraSalida + "');");
+                }
             }
 
 
