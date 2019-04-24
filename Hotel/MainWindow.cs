@@ -25,8 +25,8 @@ public partial class MainWindow : Gtk.Window
         //fmrGestionHabitaciones hab = new fmrGestionHabitaciones();
         //hab.Show();
 
-        frmGestionHabitaciones fgh = new frmGestionHabitaciones();
-        fgh.Show();
+        //frmGestionHabitaciones fgh = new frmGestionHabitaciones();
+        //fgh.Show();
     }
 
     protected void OnNuevaReservacinActionActivated(object sender, EventArgs e)
@@ -62,8 +62,8 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnEmisoresActionActivated(object sender, EventArgs e)
     {
-        frm_EmisorTarjeta fet = new frm_EmisorTarjeta();
-        fet.Show();
+        //frm_EmisorTarjeta fet = new frm_EmisorTarjeta();
+        //fet.Show();
     }
 
     protected void OnRegistroActionActivated(object sender, EventArgs e)
@@ -94,5 +94,17 @@ public partial class MainWindow : Gtk.Window
     {
         frmTipoHabitaciones fth = new frmTipoHabitaciones();
         fth.Show();
+    }
+
+    protected void OnTarjetasAction1Activated(object sender, EventArgs e)
+    {
+        fmr_tarjetas fmt = new fmr_tarjetas();
+        fmt.Show();
+    }
+
+    protected void OnAsignarRolAUsuarioActionActivated(object sender, EventArgs e)
+    {
+        frmUserRol fur = new frmUserRol();
+        fur.Show();
     }
 }

@@ -132,8 +132,6 @@
     <Compile Include="datos\dtEmisorTarjeta.cs" />
     <Compile Include="negocio\ngTipoTarjeta.cs" />
     <Compile Include="negocio\ngEmisorTarjeta.cs" />
-    <Compile Include="frm_EmisorTarjeta.cs" />
-    <Compile Include="gtk-gui\Hotel.frm_EmisorTarjeta.cs" />
     <Compile Include="frm_reservaciones.cs" />
     <Compile Include="gtk-gui\Hotel.frm_reservaciones.cs" />
     <Compile Include="negocio\ngReservacion.cs" />
@@ -181,6 +179,10 @@
     <Compile Include="gtk-gui\Hotel.frmGestionHabitaciones.cs" />
     <Compile Include="gtk-gui\Hotel.datos.dtTipoHabitaciones.cs" />
     <Compile Include="datos\dtTipoHabitacion.cs" />
+    <Compile Include="negocio\ngHuesped.cs" />
+    <Compile Include="datos\dtTarjeta.cs" />
+    <Compile Include="negocio\ngTarjeta.cs" />
+    <Compile Include="datos\dtRolUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="entidades\" />

@@ -1,35 +1,30 @@
 ﻿<Properties StartupConfiguration="{80F444DB-744C-4EF0-89F6-00A5E0A078D2}|Default">
   <MonoDevelop.Ide.ItemProperties.Hotel PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Hotel/entidades/Tbl_tipoHabitacion.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Hotel/frmUserRol.cs">
     <Files>
       <File FileName="Hotel/datos/dtDetalleReserv.cs" Line="1" Column="1" />
-      <File FileName="Hotel/fmr_Reservacion.cs" Line="1" Column="1" />
-      <File FileName="Hotel/fmr_detalleReserv.cs" Line="1" Column="1" />
-      <File FileName="Hotel/entidades/Vw_detalleReserv.cs" Line="1" Column="1" />
-      <File FileName="Hotel/negocio/ngRol.cs" Line="14" Column="24" />
-      <File FileName="Hotel/datos/dtUsuario.cs" Line="1" Column="1" />
-      <File FileName="Hotel/datos/dtReservacion.cs" Line="1" Column="1" />
-      <File FileName="Hotel/Program.cs" Line="1" Column="1" />
-      <File FileName="Hotel/negocio/ngReservacion.cs" Line="1" Column="1" />
-      <File FileName="Hotel/negocio/ngHabitaciones.cs" Line="1" Column="1" />
-      <File FileName="Hotel/datos/dtHuesped.cs" Line="1" Column="1" />
-      <File FileName="Hotel/frm_reservaciones.cs" Line="1" Column="1" />
-      <File FileName="Hotel/negocio/ngUsuario.cs" Line="1" Column="1" />
-      <File FileName="Hotel/MainWindow.cs" Line="96" Column="20" />
-      <File FileName="Hotel/gtk-gui/MainWindow.cs" Line="163" Column="16" />
-      <File FileName="Hotel/frmGestionHabitaciones.cs" Line="1" Column="1" />
-      <File FileName="Hotel/frmOpciones.cs" Line="1" Column="1" />
-      <File FileName="Hotel/gtk-gui/Hotel.frmOpciones.cs" Line="1" Column="1" />
+      <File FileName="Hotel/gtk-gui/MainWindow.cs" Line="157" Column="25" />
       <File FileName="Hotel/frmOpcionRol.cs" Line="1" Column="1" />
       <File FileName="Hotel/gtk-gui/Hotel.frmOpcionRol.cs" Line="1" Column="1" />
       <File FileName="Hotel/frmRoles.cs" Line="51" Column="25" />
       <File FileName="Hotel/gtk-gui/Hotel.frmRoles.cs" Line="1" Column="1" />
-      <File FileName="Hotel/frmTipoHabitaciones.cs" Line="116" Column="18" />
+      <File FileName="Hotel/frmTipoHabitaciones.cs" Line="30" Column="10" />
       <File FileName="Hotel/negocio/ngTipoHabitacion.cs" Line="9" Column="38" />
       <File FileName="Hotel/datos/dtTipoHabitacion.cs" Line="6" Column="23" />
       <File FileName="Hotel/gtk-gui/generated.cs" Line="33" Column="8" />
-      <File FileName="Hotel/gtk-gui/Hotel.frmGestionHabitaciones.cs" Line="148" Column="63" />
-      <File FileName="Hotel/entidades/Tbl_tipoHabitacion.cs" Line="8" Column="26" />
+      <File FileName="Hotel/gtk-gui/Hotel.frmGestionHabitaciones.cs" Line="128" Column="15" />
+      <File FileName="Hotel/entidades/Tbl_tipoHabitacion.cs" Line="8" Column="28" />
+      <File FileName="Hotel/MainWindow.cs" Line="40" Column="36" />
+      <File FileName="Hotel/negocio/ngHuesped.cs" Line="17" Column="39" />
+      <File FileName="Hotel/entidades/Tbl_huesped.cs" Line="1" Column="1" />
+      <File FileName="Hotel/fmr_tarjetas.cs" Line="57" Column="13" />
+      <File FileName="Hotel/datos/dtTipoTarjeta.cs" Line="9" Column="22" />
+      <File FileName="Hotel/negocio/ngTipoTarjeta.cs" Line="4" Column="19" />
+      <File FileName="Hotel/fmr_usuario.cs" Line="17" Column="31" />
+      <File FileName="Hotel/datos/dtUsuario.cs" Line="336" Column="54" />
+      <File FileName="Hotel/negocio/ngUsuario.cs" Line="140" Column="35" />
+      <File FileName="Hotel/negocio/ngTarjeta.cs" Line="57" Column="1" />
+      <File FileName="Hotel/frmUserRol.cs" Line="11" Column="36" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -37,9 +32,7 @@
           <Node name="Hotel" expanded="True">
             <Node name="Hotel" expanded="True">
               <Node name="datos" expanded="True" />
-              <Node name="entidades" expanded="True">
-                <Node name="Tbl_tipoHabitacion.cs" selected="True" />
-              </Node>
+              <Node name="frmUserRol.cs" selected="True" />
             </Node>
           </Node>
         </State>

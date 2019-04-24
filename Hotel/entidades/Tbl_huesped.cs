@@ -9,6 +9,7 @@ namespace Hotel.entidades
         private String apellidos;
         private String telefono;
         private String email;
+        private int estado;
 
 
         public Tbl_huesped()
@@ -21,5 +22,6 @@ namespace Hotel.entidades
         public string Apellidos { get => apellidos; set => apellidos = value; }
         public string Telefono { get => telefono; set => telefono = value; }
         public string Email { get => email; set => email = value; }
+        public int Estado { get => estado; set => estado = value; }
     }
 }
