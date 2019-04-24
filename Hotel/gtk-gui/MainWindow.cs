@@ -41,6 +41,16 @@ public partial class MainWindow
 
 	private global::Gtk.Action RegistroAction;
 
+	private global::Gtk.Action AsignarOpcinARolAction;
+
+	private global::Gtk.Action GestinDeOpcionesAction;
+
+	private global::Gtk.Action GestinRolesAction;
+
+	private global::Gtk.Action AsignarRolAUsuarioAction;
+
+	private global::Gtk.Action TipoDeHabitacionesAction;
+
 	private global::Gtk.Fixed fixed1;
 
 	private global::Gtk.MenuBar menubar1;
@@ -103,6 +113,21 @@ public partial class MainWindow
 		this.RegistroAction = new global::Gtk.Action("RegistroAction", global::Mono.Unix.Catalog.GetString("Registro"), null, null);
 		this.RegistroAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Registro");
 		w1.Add(this.RegistroAction, null);
+		this.AsignarOpcinARolAction = new global::Gtk.Action("AsignarOpcinARolAction", global::Mono.Unix.Catalog.GetString("Asignar opción a rol"), null, null);
+		this.AsignarOpcinARolAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Asignar opción a rol");
+		w1.Add(this.AsignarOpcinARolAction, null);
+		this.GestinDeOpcionesAction = new global::Gtk.Action("GestinDeOpcionesAction", global::Mono.Unix.Catalog.GetString("Gestión de opciones"), null, null);
+		this.GestinDeOpcionesAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Gestión de opciones");
+		w1.Add(this.GestinDeOpcionesAction, null);
+		this.GestinRolesAction = new global::Gtk.Action("GestinRolesAction", global::Mono.Unix.Catalog.GetString("Gestión roles"), null, null);
+		this.GestinRolesAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Gestión roles");
+		w1.Add(this.GestinRolesAction, null);
+		this.AsignarRolAUsuarioAction = new global::Gtk.Action("AsignarRolAUsuarioAction", global::Mono.Unix.Catalog.GetString("Asignar rol a usuario"), null, null);
+		this.AsignarRolAUsuarioAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Asignar rol a usuario");
+		w1.Add(this.AsignarRolAUsuarioAction, null);
+		this.TipoDeHabitacionesAction = new global::Gtk.Action("TipoDeHabitacionesAction", global::Mono.Unix.Catalog.GetString("Tipo de Habitaciones"), null, null);
+		this.TipoDeHabitacionesAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Tipo de Habitaciones");
+		w1.Add(this.TipoDeHabitacionesAction, null);
 		this.UIManager.InsertActionGroup(w1, 0);
 		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
@@ -117,7 +142,7 @@ public partial class MainWindow
 		this.fixed1.Name = "fixed1";
 		this.fixed1.HasWindow = false;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.UIManager.AddUiFromString(@"<ui><menubar name='menubar1'><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='CerrarSesinAction' action='CerrarSesinAction'/><menuitem name='SalirAction' action='SalirAction'/></menu><menu name='GestinAction' action='GestinAction'><menuitem name='HuespedesAction' action='HuespedesAction'/><menuitem name='ProductosAction' action='ProductosAction'/><menuitem name='HabitacionesAction' action='HabitacionesAction'/><menu name='TarjetasAction' action='TarjetasAction'><menuitem name='EmisoresAction' action='EmisoresAction'/></menu></menu><menu name='UsuariosAction' action='UsuariosAction'><menuitem name='UsuariosAction1' action='UsuariosAction1'/><menuitem name='RolesAction' action='RolesAction'/><menuitem name='OpcionesAction1' action='OpcionesAction1'/></menu><menu name='ReservacionesAction' action='ReservacionesAction'><menuitem name='NuevaReservacinAction' action='NuevaReservacinAction'/><menuitem name='RegistroAction' action='RegistroAction'/></menu></menubar></ui>");
+		this.UIManager.AddUiFromString(@"<ui><menubar name='menubar1'><menu name='OpcionesAction' action='OpcionesAction'><menuitem name='CerrarSesinAction' action='CerrarSesinAction'/><menuitem name='SalirAction' action='SalirAction'/></menu><menu name='GestinAction' action='GestinAction'><menuitem name='HuespedesAction' action='HuespedesAction'/><menuitem name='ProductosAction' action='ProductosAction'/><menu name='HabitacionesAction' action='HabitacionesAction'><menuitem name='TipoDeHabitacionesAction' action='TipoDeHabitacionesAction'/></menu><menu name='TarjetasAction' action='TarjetasAction'><menuitem name='EmisoresAction' action='EmisoresAction'/></menu></menu><menu name='UsuariosAction' action='UsuariosAction'><menuitem name='UsuariosAction1' action='UsuariosAction1'/><menu name='RolesAction' action='RolesAction'><menuitem name='GestinRolesAction' action='GestinRolesAction'/><menuitem name='AsignarRolAUsuarioAction' action='AsignarRolAUsuarioAction'/></menu><menu name='OpcionesAction1' action='OpcionesAction1'><menuitem name='AsignarOpcinARolAction' action='AsignarOpcinARolAction'/><menuitem name='GestinDeOpcionesAction' action='GestinDeOpcionesAction'/></menu></menu><menu name='ReservacionesAction' action='ReservacionesAction'><menuitem name='NuevaReservacinAction' action='NuevaReservacinAction'/><menuitem name='RegistroAction' action='RegistroAction'/></menu></menubar></ui>");
 		this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menubar1")));
 		this.menubar1.Name = "menubar1";
 		this.fixed1.Add(this.menubar1);
@@ -137,8 +162,13 @@ public partial class MainWindow
 		this.HabitacionesAction.Activated += new global::System.EventHandler(this.OnHabitacionesActionActivated);
 		this.NuevaReservacinAction.Activated += new global::System.EventHandler(this.OnNuevaReservacinActionActivated);
 		this.UsuariosAction1.Activated += new global::System.EventHandler(this.OnUsuariosAction1Activated);
+		//this.OpcionesAction1.Activated += new global::System.EventHandler(this.OnOpcionesAction1Activated);
 		//this.TarjetasAction.Activated += new global::System.EventHandler(this.OnTarjetasActionActivated);
 		this.EmisoresAction.Activated += new global::System.EventHandler(this.OnEmisoresActionActivated);
 		this.RegistroAction.Activated += new global::System.EventHandler(this.OnRegistroActionActivated);
+		this.AsignarOpcinARolAction.Activated += new global::System.EventHandler(this.OnAsignarOpcinARolActionActivated);
+		this.GestinDeOpcionesAction.Activated += new global::System.EventHandler(this.OnGestinDeOpcionesActionActivated);
+		this.GestinRolesAction.Activated += new global::System.EventHandler(this.OnGestinRolesActionActivated);
+		this.TipoDeHabitacionesAction.Activated += new global::System.EventHandler(this.OnTipoDeHabitacionesActionActivated);
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data;
-using MySql.Data;
+//using MySql.Data;
 using Gtk;
 using System.Text;
 using Hotel.entidades;
@@ -8,21 +8,21 @@ using System.Collections.Generic;
 
 namespace Hotel.datos
 {
-    public class dtOpcion
+    public class dtTipoHabitacciones
     {
         Conexion con = new Conexion();
         MessageDialog ms = null;
         StringBuilder sb = new StringBuilder();
 
         #region metodos
-        public bool GuardarOpcion(Tbl_opcion top)
+        public bool GuardarTipHabitacion(Tbl_tipoHabitacion tph)
         {
             bool guardado = false; // bandera
             int x = 0; // variable de control
             sb.Clear();
-            sb.Append("INSERT INTO tbl_opcion");
-            sb.Append("(opcion, estado)");
-            sb.Append(" VALUES('" + top.Opcion + "','" + 1 + "')");
+            sb.Append("INSERT INTO tbl_tipoHabitacion");
+            sb.Append("(descripcion, estado)");
+            sb.Append(" VALUES('" + tph.Descripcion + "','" + 1 + "')");
             try
             {
                 con.AbrirConexion();
@@ -54,14 +54,14 @@ namespace Hotel.datos
 
         }//fin del metodo
 
-        public ListStore ListarOpciones()
+        public ListStore ListarTipHabitacion()
         {
             ListStore datos = new ListStore(typeof(string), typeof(string));
 
 
             IDataReader dr = null;
             sb.Clear();
-            sb.Append("SELECT id_opcion,opcion FROM tbl_opcion WHERE estado<>3;");
+            sb.Append("SELECT id_tipoHabitacion,descripcion FROM tbl_tipoHabitacion WHERE estado<>3;");
             try
             {
                 con.AbrirConexion();
@@ -88,13 +88,13 @@ namespace Hotel.datos
             }
         }//fin del metodo
 
-        public bool existeOpcion(Tbl_opcion top)
+        public bool existeTipHabitacion(Tbl_tipoHabitacion tph)
         {
             bool existe = false; //bandera
             IDataReader idr = null;
             sb.Clear();
             sb.Append("USE hotel;");
-            sb.Append("SELECT * FROM tbl_opcion WHERE opcion=" + "'" + top.Opcion + "';");
+            sb.Append("SELECT * FROM tbl_tipoHabitacion WHERE descripcion=" + "'" + tph.Descripcion + "';");
 
             try
             {
@@ -119,11 +119,11 @@ namespace Hotel.datos
             }
         }//fin del metodo
 
-        public Int32 EliminarOpcion(Tbl_opcion top)
+        public Int32 EliminarTipHabitacion(Tbl_tipoHabitacion tph)
         {
             int eliminado;
             sb.Clear();
-            sb.Append("UPDATE tbl_opcion SET estado = 3 WHERE id_opcion=" + top.Id_opcion + "");
+            sb.Append("UPDATE tbl_tipoHabitacion SET estado = 3 WHERE id_tipoHabitacion=" + tph.Id_tipoHabitacion + "");
 
             try
             {
@@ -146,14 +146,14 @@ namespace Hotel.datos
 
         }//fin del metodo
 
-        public bool ActualizarOpcion(Tbl_opcion top)
+        public bool ActualizarTipHabitacion(Tbl_tipoHabitacion tph)
         {
             bool actualizado = false;
             int x = 0;
             sb.Clear();
-            sb.Append("UPDATE tbl_opcion SET opcion = '" + top.Opcion + "',");
-            sb.Append("estado = '" + top.Estado + "'");
-            sb.Append("WHERE id_opcion = " + top.Id_opcion + ";");
+            sb.Append("UPDATE tbl_tipoHabitacion SET descripcion = '" + tph.Descripcion + "',");
+            sb.Append("estado = '" + tph.Estado + "'");
+            sb.Append("WHERE id_tipoHabitacion = " + tph.Id_tipoHabitacion + ";");
 
             try
             {
@@ -182,15 +182,15 @@ namespace Hotel.datos
         }//fin del metodo
 
 
-        public ListStore buscarOpcion(String cadena)
+        public ListStore buscarTipHabitacion(String cadena)
         {
             ListStore datos = new ListStore(typeof(string), typeof(string));
             IDataReader dr = null;
             sb.Clear();
             sb.Append("USE hotel;");
-            sb.Append("SELECT id_opcion,opcion FROM tbl_opcion ");
+            sb.Append("SELECT id_tipoHabitacion,descripcion FROM tbl_tipoHabitacion ");
             sb.Append("WHERE (estado <>3) ");
-            sb.Append("AND (opcion like '%" + cadena + "%'); ");//Busca lo que coincida con la busqueda y los % son para especificar que no importa si hay algo antes o despues
+            sb.Append("AND (descripcion like '%" + cadena + "%'); ");//Busca lo que coincida con la busqueda y los % son para especificar que no importa si hay algo antes o despues
             try
             {
                 con.AbrirConexion();
@@ -219,13 +219,13 @@ namespace Hotel.datos
             }
         }//fin del metodo
 
-        public int getIdOpcion(String opc)
+        public int getIdTipHab(String des)
         {
             int existe = 0; //bandera
             IDataReader idr = null;
             sb.Clear();
             sb.Append("USE hotel;");
-            sb.Append("SELECT id_opcion FROM tbl_opcion WHERE opcion=" + "'" + opc + "';");
+            sb.Append("SELECT id_tipoHabitacion FROM tbl_tipoHabitacion WHERE descripcion=" + "'" + des + "';");
 
             try
             {
@@ -233,7 +233,7 @@ namespace Hotel.datos
                 idr = con.Leer(CommandType.Text, sb.ToString());
                 if (idr.Read())
                 {
-                    existe = (Int32)idr["id_opcion"];
+                    existe = (Int32)idr["id_tipoHabitacion"];
                 }
                 return existe;
             }
@@ -250,13 +250,13 @@ namespace Hotel.datos
             }
         }//fin del metodo
 
-        public List<Tbl_opcion> cbxOpcion()
+        public List<Tbl_tipoHabitacion> cbxtipoHabitacion()
         {
-            List<Tbl_opcion> listOpcion = new List<Tbl_opcion>();
+            List<Tbl_tipoHabitacion> listTipHab = new List<Tbl_tipoHabitacion>();
             IDataReader idr = null;
             sb.Clear();
             sb.Append("USE hotel;");
-            sb.Append("SELECT id_opcion,opcion FROM tbl_opcion WHERE estado <> '3';");
+            sb.Append("SELECT id_tipoHabitacion,descripcion FROM tbl_tipoHabitacion WHERE estado <> '3';");
 
             try
             {
@@ -264,18 +264,18 @@ namespace Hotel.datos
                 idr = con.Leer(CommandType.Text, sb.ToString());
                 while (idr.Read())
                 {
-                    Tbl_opcion top = new Tbl_opcion()
+                    Tbl_tipoHabitacion tth = new Tbl_tipoHabitacion()
                     //Tbl_usuarios tus = new Tbl_usuarios()
                     {
-                        Id_opcion = (Int32)idr["id_opcion"],
-                        Opcion = idr["opcion"].ToString(),
+                        Id_tipoHabitacion = (Int32)idr["id_tipoHabitacion"],
+                        Descripcion = idr["descripcion"].ToString(),
 
                     };
-                    listOpcion.Add(top);
+                    listTipHab.Add(tth);
 
                 }
                 idr.Close();
-                return listOpcion;
+                return listTipHab;
 
             }
             catch (Exception e)
@@ -291,7 +291,7 @@ namespace Hotel.datos
         }//fin del metodo
         #endregion
 
-        public dtOpcion()
+        public dtTipoHabitacciones()
         {
         }
     }

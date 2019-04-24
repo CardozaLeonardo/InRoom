@@ -123,8 +123,6 @@
     <Compile Include="gtk-gui\Hotel.fmr_huespedes.cs" />
     <Compile Include="fmr_tarjetas.cs" />
     <Compile Include="gtk-gui\Hotel.fmr_tarjetas.cs" />
-    <Compile Include="fmrGestionHabitaciones.cs" />
-    <Compile Include="gtk-gui\Hotel.fmrGestionHabitaciones.cs" />
     <Compile Include="datos\dtUsuario.cs" />
     <Compile Include="datos\Conexion.cs" />
     <Compile Include="negocio\ngUsuario.cs" />
@@ -169,8 +167,6 @@
     <Compile Include="datos\dtRol.cs" />
     <Compile Include="frmRoles.cs" />
     <Compile Include="gtk-gui\Hotel.frmRoles.cs" />
-    <Compile Include="frmOpciones.cs" />
-    <Compile Include="gtk-gui\Hotel.frmOpciones.cs" />
     <Compile Include="frmOpcionRol.cs" />
     <Compile Include="gtk-gui\Hotel.frmOpcionRol.cs" />
     <Compile Include="frmUserRol.cs" />
@@ -179,6 +175,12 @@
     <Compile Include="gtk-gui\Hotel.frmHabitaciones.cs" />
     <Compile Include="frmTipoHabitaciones.cs" />
     <Compile Include="gtk-gui\Hotel.frmTipoHabitaciones.cs" />
+    <Compile Include="frmOpciones.cs" />
+    <Compile Include="gtk-gui\Hotel.frmOpciones.cs" />
+    <Compile Include="frmGestionHabitaciones.cs" />
+    <Compile Include="gtk-gui\Hotel.frmGestionHabitaciones.cs" />
+    <Compile Include="gtk-gui\Hotel.datos.dtTipoHabitaciones.cs" />
+    <Compile Include="datos\dtTipoHabitacion.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="entidades\" />

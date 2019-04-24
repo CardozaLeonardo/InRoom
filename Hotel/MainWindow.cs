@@ -22,8 +22,11 @@ public partial class MainWindow : Gtk.Window
 
     protected void OnHabitacionesActionActivated(object sender, EventArgs e)
     {
-        fmrGestionHabitaciones hab = new fmrGestionHabitaciones();
-        hab.Show();
+        //fmrGestionHabitaciones hab = new fmrGestionHabitaciones();
+        //hab.Show();
+
+        frmGestionHabitaciones fgh = new frmGestionHabitaciones();
+        fgh.Show();
     }
 
     protected void OnNuevaReservacinActionActivated(object sender, EventArgs e)
@@ -67,5 +70,29 @@ public partial class MainWindow : Gtk.Window
     {
         frm_reservaciones frm = new frm_reservaciones();
         frm.Show();
+    }
+
+    protected void OnAsignarOpcinARolActionActivated(object sender, EventArgs e)
+    {
+        frmOpcionRol form = new frmOpcionRol();
+        form.Show();
+    }
+
+    protected void OnGestinDeOpcionesActionActivated(object sender, EventArgs e)
+    {
+        frmOpciones opciones = new frmOpciones();
+        opciones.Show();
+    }
+
+    protected void OnGestinRolesActionActivated(object sender, EventArgs e)
+    {
+        frmRoles fmrs = new frmRoles();
+        fmrs.Show();
+    }
+
+    protected void OnTipoDeHabitacionesActionActivated(object sender, EventArgs e)
+    {
+        frmTipoHabitaciones fth = new frmTipoHabitaciones();
+        fth.Show();
     }
 }

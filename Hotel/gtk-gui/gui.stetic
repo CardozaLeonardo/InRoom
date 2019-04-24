@@ -7,6 +7,7 @@
     <widget-library name="../bin/Release/Hotel.exe" internal="true" />
     <widget-library name="../../../../../../usr/lib/monodevelop/AddIns/MonoDevelop.GtkCore/libstetic.dll" />
   </import>
+  <action-group name="Hotel.datos.dtTipoHabitaciones" />
   <widget class="Gtk.Window" id="MainWindow" design-size="766 424">
     <action-group name="Default">
       <action id="propertiesAction">
@@ -89,6 +90,7 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Opciones</property>
         <property name="ShortLabel" translatable="yes">Opciones</property>
+        <signal name="Activated" handler="OnOpcionesAction1Activated" />
       </action>
       <action id="TarjetasAction">
         <property name="Type">Action</property>
@@ -107,6 +109,35 @@
         <property name="Label" translatable="yes">Registro</property>
         <property name="ShortLabel" translatable="yes">Registro</property>
         <signal name="Activated" handler="OnRegistroActionActivated" />
+      </action>
+      <action id="AsignarOpcinARolAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Asignar opción a rol</property>
+        <property name="ShortLabel" translatable="yes">Asignar opción a rol</property>
+        <signal name="Activated" handler="OnAsignarOpcinARolActionActivated" />
+      </action>
+      <action id="GestinDeOpcionesAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Gestión de opciones</property>
+        <property name="ShortLabel" translatable="yes">Gestión de opciones</property>
+        <signal name="Activated" handler="OnGestinDeOpcionesActionActivated" />
+      </action>
+      <action id="GestinRolesAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Gestión roles</property>
+        <property name="ShortLabel" translatable="yes">Gestión roles</property>
+        <signal name="Activated" handler="OnGestinRolesActionActivated" />
+      </action>
+      <action id="AsignarRolAUsuarioAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Asignar rol a usuario</property>
+        <property name="ShortLabel" translatable="yes">Asignar rol a usuario</property>
+      </action>
+      <action id="TipoDeHabitacionesAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Tipo de Habitaciones</property>
+        <property name="ShortLabel" translatable="yes">Tipo de Habitaciones</property>
+        <signal name="Activated" handler="OnTipoDeHabitacionesActionActivated" />
       </action>
     </action-group>
     <property name="MemberName" />
@@ -132,15 +163,23 @@
               <node type="Menu" action="GestinAction">
                 <node type="Menuitem" action="HuespedesAction" />
                 <node type="Menuitem" action="ProductosAction" />
-                <node type="Menuitem" action="HabitacionesAction" />
+                <node type="Menu" action="HabitacionesAction">
+                  <node type="Menuitem" action="TipoDeHabitacionesAction" />
+                </node>
                 <node type="Menu" action="TarjetasAction">
                   <node type="Menuitem" action="EmisoresAction" />
                 </node>
               </node>
               <node type="Menu" action="UsuariosAction">
                 <node type="Menuitem" action="UsuariosAction1" />
-                <node type="Menuitem" action="RolesAction" />
-                <node type="Menuitem" action="OpcionesAction1" />
+                <node type="Menu" action="RolesAction">
+                  <node type="Menuitem" action="GestinRolesAction" />
+                  <node type="Menuitem" action="AsignarRolAUsuarioAction" />
+                </node>
+                <node type="Menu" action="OpcionesAction1">
+                  <node type="Menuitem" action="AsignarOpcinARolAction" />
+                  <node type="Menuitem" action="GestinDeOpcionesAction" />
+                </node>
               </node>
               <node type="Menu" action="ReservacionesAction">
                 <node type="Menuitem" action="NuevaReservacinAction" />
@@ -851,14 +890,6 @@
       <placeholder />
     </child>
   </widget>
-  <widget class="Gtk.Window" id="Hotel.fmrGestionHabitaciones" design-size="400 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">fmrGestionHabitaciones</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <placeholder />
-    </child>
-  </widget>
   <widget class="Gtk.Window" id="Hotel.frm_EmisorTarjeta" design-size="486 428">
     <property name="MemberName" />
     <property name="Title" translatable="yes">frm_EmisorTarjeta</property>
@@ -1413,28 +1444,298 @@
       <placeholder />
     </child>
   </widget>
-  <widget class="Gtk.Window" id="Hotel.frmRoles" design-size="400 300">
+  <widget class="Gtk.Window" id="Hotel.frmRoles" design-size="422 450">
     <property name="MemberName" />
     <property name="Title" translatable="yes">frmRoles</property>
     <property name="WindowPosition">CenterOnParent</property>
     <child>
-      <placeholder />
+      <widget class="Gtk.Fixed" id="fixed1">
+        <property name="MemberName" />
+        <property name="HasWindow">False</property>
+        <child>
+          <widget class="Gtk.Label" id="label2">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Rol:</property>
+          </widget>
+          <packing>
+            <property name="X">54</property>
+            <property name="Y">70</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtRol">
+            <property name="MemberName" />
+            <property name="WidthRequest">250</property>
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">100</property>
+            <property name="Y">65</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnEliminar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Eliminar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnEliminarClicked" />
+          </widget>
+          <packing>
+            <property name="X">300</property>
+            <property name="Y">105</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnModificar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Modificar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnModificarClicked" />
+          </widget>
+          <packing>
+            <property name="X">148</property>
+            <property name="Y">105</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnGuardar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Guardar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnGuardarClicked" />
+          </widget>
+          <packing>
+            <property name="X">78</property>
+            <property name="Y">105</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label1">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Configuraciones de Roles de Usuarios</property>
+          </widget>
+          <packing>
+            <property name="X">90</property>
+            <property name="Y">27</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+            <property name="MemberName" />
+            <property name="WidthRequest">380</property>
+            <property name="HeightRequest">250</property>
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.TreeView" id="tvwRoles">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+                <signal name="CursorChanged" handler="OnTvwRolesCursorChanged" />
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="X">23</property>
+            <property name="Y">192</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnBuscar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Buscar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnBuscarClicked" />
+          </widget>
+          <packing>
+            <property name="X">334</property>
+            <property name="Y">160</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtBuscarRol">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="WidthChars">36</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">30</property>
+            <property name="Y">160</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnCancelar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Cancelar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnCancelarClicked" />
+          </widget>
+          <packing>
+            <property name="X">228</property>
+            <property name="Y">105</property>
+          </packing>
+        </child>
+      </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="Hotel.frmOpciones" design-size="400 300">
+  <widget class="Gtk.Window" id="Hotel.frmOpciones" design-size="440 378">
     <property name="MemberName" />
     <property name="Title" translatable="yes">frmOpciones</property>
     <property name="WindowPosition">CenterOnParent</property>
     <child>
-      <placeholder />
-    </child>
-  </widget>
-  <widget class="Gtk.Window" id="Hotel.frmOpcionRol" design-size="400 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">frmOpcionRol</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <placeholder />
+      <widget class="Gtk.Fixed" id="fixed3">
+        <property name="MemberName" />
+        <property name="HasWindow">False</property>
+        <child>
+          <widget class="Gtk.Label" id="label3">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Opciones de gestion</property>
+          </widget>
+          <packing>
+            <property name="X">150</property>
+            <property name="Y">19</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label5">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Opcion:</property>
+          </widget>
+          <packing>
+            <property name="X">40</property>
+            <property name="Y">58</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtOpcion">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="WidthChars">35</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">95</property>
+            <property name="Y">55</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnGuardar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Guardar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnGuardarClicked" />
+          </widget>
+          <packing>
+            <property name="X">40</property>
+            <property name="Y">95</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+            <property name="MemberName" />
+            <property name="WidthRequest">380</property>
+            <property name="HeightRequest">180</property>
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.TreeView" id="tvwOpcion">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+                <signal name="CursorChanged" handler="OnTvwOpcionCursorChanged" />
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="X">30</property>
+            <property name="Y">180</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnModificar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Modificar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnModificarClicked" />
+          </widget>
+          <packing>
+            <property name="X">120</property>
+            <property name="Y">95</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnCancelar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Cancelar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnCancelarClicked" />
+          </widget>
+          <packing>
+            <property name="X">210</property>
+            <property name="Y">95</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnEliminar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Eliminar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnEliminarClicked" />
+          </widget>
+          <packing>
+            <property name="X">300</property>
+            <property name="Y">95</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtBuscar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="WidthChars">37</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">30</property>
+            <property name="Y">135</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnBuscar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Buscar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnBuscarClicked" />
+          </widget>
+          <packing>
+            <property name="X">335</property>
+            <property name="Y">133</property>
+          </packing>
+        </child>
+      </widget>
     </child>
   </widget>
   <widget class="Gtk.Window" id="Hotel.frmUserRol" design-size="400 300">
@@ -1453,12 +1754,430 @@
       <placeholder />
     </child>
   </widget>
-  <widget class="Gtk.Window" id="Hotel.frmTipoHabitaciones" design-size="400 300">
+  <widget class="Gtk.Window" id="Hotel.frmTipoHabitaciones" design-size="408 526">
     <property name="MemberName" />
     <property name="Title" translatable="yes">frmTipoHabitaciones</property>
     <property name="WindowPosition">CenterOnParent</property>
     <child>
-      <placeholder />
+      <widget class="Gtk.Fixed" id="fixed1">
+        <property name="MemberName" />
+        <property name="HasWindow">False</property>
+        <child>
+          <widget class="Gtk.Label" id="label1">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Tipos de Habitaciones</property>
+          </widget>
+          <packing>
+            <property name="X">126</property>
+            <property name="Y">8</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label2">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Descripcion de Habitacion:</property>
+          </widget>
+          <packing>
+            <property name="X">11</property>
+            <property name="Y">63</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtDescripHab">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">199</property>
+            <property name="Y">60</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnGuardar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Guardar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnGuardarClicked" />
+          </widget>
+          <packing>
+            <property name="X">40</property>
+            <property name="Y">105</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnModificar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Modificar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnModificarClicked" />
+          </widget>
+          <packing>
+            <property name="X">115</property>
+            <property name="Y">105</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnEliminar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Eliminar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnEliminarClicked" />
+          </widget>
+          <packing>
+            <property name="X">280</property>
+            <property name="Y">105</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+            <property name="MemberName" />
+            <property name="WidthRequest">350</property>
+            <property name="HeightRequest">300</property>
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.TreeView" id="tvwTipHabitacion">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+                <signal name="CursorChanged" handler="OnTvwTipHabitacionCursorChanged" />
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="X">27</property>
+            <property name="Y">180</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnBuscar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Buscar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnBuscarClicked" />
+          </widget>
+          <packing>
+            <property name="X">304</property>
+            <property name="Y">143</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnCancelar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Cancelar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnCancelarClicked" />
+          </widget>
+          <packing>
+            <property name="X">200</property>
+            <property name="Y">105</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtBuscar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="WidthChars">32</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">31</property>
+            <property name="Y">145</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="Hotel.frmGestionHabitaciones" design-size="400 610">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">frmGestionHabitaciones</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <widget class="Gtk.Fixed" id="fixed2">
+        <property name="MemberName" />
+        <property name="HasWindow">False</property>
+        <child>
+          <widget class="Gtk.Label" id="label3">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Gestiones de Habitaciones</property>
+          </widget>
+          <packing>
+            <property name="X">121</property>
+            <property name="Y">17</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label4">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Numero de Habitacion:</property>
+          </widget>
+          <packing>
+            <property name="X">31</property>
+            <property name="Y">50</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label5">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Descripcion Habitacion:</property>
+          </widget>
+          <packing>
+            <property name="X">30</property>
+            <property name="Y">90</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtNoHab">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">194</property>
+            <property name="Y">48</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnAñadirHab">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Añadir Habitacion</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnAñadirHabClicked" />
+          </widget>
+          <packing>
+            <property name="X">32</property>
+            <property name="Y">125</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnEliminarHab">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Eliminar Habitacion</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnEliminarHabClicked" />
+          </widget>
+          <packing>
+            <property name="X">200</property>
+            <property name="Y">125</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnBuscar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Buscar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnBuscarClicked" />
+          </widget>
+          <packing>
+            <property name="X">280</property>
+            <property name="Y">170</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ScrolledWindow" id="vwTablaHab">
+            <property name="MemberName" />
+            <property name="WidthRequest">350</property>
+            <property name="HeightRequest">380</property>
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.TreeView" id="tvwHabitaciones">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+                <signal name="CursorChanged" handler="OnTvwHabitacionesCursorChanged" />
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="X">24</property>
+            <property name="Y">210</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ComboBox" id="cbxDescripcHab">
+            <property name="MemberName" />
+            <property name="WidthRequest">160</property>
+            <property name="IsTextCombo">True</property>
+            <property name="Items" translatable="yes" />
+          </widget>
+          <packing>
+            <property name="X">194</property>
+            <property name="Y">85</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtBuscar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="WidthChars">30</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">29</property>
+            <property name="Y">171</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Window" id="Hotel.frmOpcionRol" design-size="572 429">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">frmOpcionRol</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <widget class="Gtk.Fixed" id="fixed1">
+        <property name="MemberName" />
+        <property name="HasWindow">False</property>
+        <child>
+          <widget class="Gtk.Label" id="l">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Acreditaciones de Opciones a los Roles de Usuarios</property>
+          </widget>
+          <packing>
+            <property name="X">108</property>
+            <property name="Y">22</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label2">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Rol:</property>
+          </widget>
+          <packing>
+            <property name="X">23</property>
+            <property name="Y">75</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ComboBox" id="cbxRol">
+            <property name="MemberName" />
+            <property name="WidthRequest">200</property>
+            <property name="IsTextCombo">True</property>
+            <property name="Items" translatable="yes" />
+          </widget>
+          <packing>
+            <property name="X">56</property>
+            <property name="Y">68</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="label3">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Opcion:</property>
+          </widget>
+          <packing>
+            <property name="X">275</property>
+            <property name="Y">75</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ComboBox" id="cbxOpcion">
+            <property name="MemberName" />
+            <property name="WidthRequest">200</property>
+            <property name="IsTextCombo">True</property>
+            <property name="Items" translatable="yes" />
+          </widget>
+          <packing>
+            <property name="X">330</property>
+            <property name="Y">68</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="txtBuscar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="WidthChars">50</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="X">30</property>
+            <property name="Y">160</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnElOpcRol">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Eliminar Opcion al Rol</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnElOpcRolClicked" />
+          </widget>
+          <packing>
+            <property name="X">100</property>
+            <property name="Y">120</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnAsigOpcRol">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Asignar Opcion al Rol</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnAsigOpcRolClicked" />
+          </widget>
+          <packing>
+            <property name="X">310</property>
+            <property name="Y">120</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="btnBuscar">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">Buscar</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnBtnBuscarClicked" />
+          </widget>
+          <packing>
+            <property name="X">446</property>
+            <property name="Y">158</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+            <property name="MemberName" />
+            <property name="WidthRequest">520</property>
+            <property name="HeightRequest">200</property>
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.TreeView" id="tvwOpcRol">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+                <signal name="CursorChanged" handler="OnTvwOpcRolCursorChanged" />
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="X">30</property>
+            <property name="Y">203</property>
+          </packing>
+        </child>
+      </widget>
     </child>
   </widget>
 </stetic-interface>
